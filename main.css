@@ -103,6 +103,9 @@ nav .fa{
     display: none;
 }
 @media(max-width: 700px){
+    .header{
+        background: #000;
+    }
     
     .text-box h1{
         font-size: 20px;
@@ -454,7 +457,6 @@ label{
     left: 0;
     top: 0;
     padding: 10px;
-    color: #fff;
     cursor: text;
     background-color: transparent;
     transition: 0.2s;
@@ -503,188 +505,3 @@ textarea:valid~label
 }
 
 /*--------Sign up & Login Page------*/
-.login-signup{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-   
-    
-    
-
-}
-.container-forms{
-   
-    box-sizing: border-box;
-    height:100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #000;
-    column-gap: 30px;
-    
-
-}
-
-.page{
-    
-    margin: 5%;
-    max-width: 430px;
-    width: 100%;
-    border-radius: 6px;
-    padding: 30px;
-    background-color: #fff;
-    
-   
-}
-.login-signup-header{
-    font-size: 28px;
-    font-weight: 600;
-    text-align: center;
-    color: #232836;
-    
-}
-
-
-.form{
-    margin-top: 30px;
-
-}
-.page .field{
-    position: relative;
-    height: 50px;
-    width: 100%;
-    margin-top: 20px;
-    border-radius: 6px;
-    
-}
-
-.field input,
-.field button{
-    height: 100%;
-    width: 100%;
-    border: none ;
-    font-size: 16px;
-    color:#000;
-    font-weight: 400px;
-    border-radius: 6px;
-}
-.field button{
-
-    color: #fff;
-    background-color: #0171d3;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    margin-left:5%;
-}
-
-.field button:hover{
-    background-color: #016dcb;
-}
-
-.field input{
-    outline: none;
-    padding:0 15px;
-    border: 1px solid #CACACA;
-    
-}
-.field input:focus{
-    border-bottom-width: 2px;
-}
-.form-link{
-    text-align: center;
-    margin-top: 10%;
-    
-}
-.form-link span,
-.form-link a{
-    font-size: 14px;
-    font-weight: 400;
-    color: #232836;
-}
-.field label{
-    color:#000;
-}
-.page a{
-    color: #0171d3;
-    text-decoration: none;
-
-}
-.form-content a:hover{
-    text-decoration: underline;
-}
-
-.fa-eye-slash{
-    position: absolute;
-    top: 30%;
-    right: 0px;
-    transform:translate(-50%);
-    font-size: 18px;
-    color: #8b8b8b;
-    cursor: pointer;
-    
-
-}
-
-.line{
-    position: relative;
-    height: 1px;
-    width: 100%;
-    margin: 36px 0;
-    background-color:#d4d4d4
-}
-
-.line::before{
-    content:'OR';
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background-color: #fff;
-    color: #232836;
-    padding: 0 15px;
-}
-
-.one{
-    margin-top: -5%;
-}
-.media-options a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
- img.google-img{
-    height: 20px;
-    width: 20px;
-    object-fit: cover;
-    position: absolute;
-    top: 50%;
-    left:15px;
-    transform: translateY(-50%);
- }
- a.google{
-    border: 1px solid #CACACA;
- }
- a.google span{
-    font-weight: 500;
-    opacity: 0.6;
-    color: #232836;
- }
- #signup{
-    margin-top: 5%;
-    margin-bottom: 5%;
- }
-
- @media(max-width: 700px) {
-    .page{
-        padding: 20px 10px;
-        max-width: 200ps;
-        flex-direction: column;
-    }
-    .forms{
-        display: flex;
-    }
-    
-}
- 
