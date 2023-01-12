@@ -1,10 +1,10 @@
-function setFormMessage(formElement, type, message){
+/*function setFormMessage(formElement, type, message){
     const messageElement = formElement.querySelector(".form__message");
 
     messageElement.textContent = message;
     messageElement.classList.remove("form__message--success", "form__message--error");
     messageElement.classList.add(`form__message--${type}`)
-}
+}*/
 
 function setInputError(inputElement, message){
     inputElement.classList.add("form__input--error");
@@ -14,6 +14,26 @@ function setInputError(inputElement, message){
 function clearInputError(inputElement){
     inputElement.classList.remove("form__input--error");
     inputElement.parentElement.querySelector(".form__input-error-message").textContent="";
+}
+
+function signup(e){
+    event.preventDefault();
+    //console.log('working')
+
+    var username = document.getElementById('signupUsername').value;
+    var password = document.getElementById('new-password').value;
+    var email = document.getElementById("email").value
+
+    var user = {
+        username: username,
+        email: email,
+        password: password
+    };
+
+    var json =  JSON.stringify(user);
+    localStorage.setItem(user,json);
+    console.log('user added');
+
 }
 
 document.addEventListener("DOMContentLoaded", () =>{
@@ -32,11 +52,11 @@ document.addEventListener("DOMContentLoaded", () =>{
         createAccountForm.classList.add("form--hidden");
         
     });
-    loginForm.addEventListener("submit", e =>{
+    /*loginForm.addEventListener("submit", e =>{
         e.preventDefault();
 
         setFormMessage(loginForm, "error", "Invalid username/password combination")
-    });
+    });*/
     document.querySelectorAll(".form__input").forEach(inputElement => {
         inputElement.addEventListener("blur", e=>{
             if(e.target.id === "signupUsername" && e.target.value.length>0 && e.target.value.length<10){
@@ -48,3 +68,23 @@ document.addEventListener("DOMContentLoaded", () =>{
         });
     });
 });
+
+
+
+function login(e){
+    event.preventDefault();
+    //console.log('working')
+
+    var username = document.getElementById('username--email').value;
+    var password = document.getElementById('password').value;
+
+    var user = {
+        username: username,
+        password: password
+    };
+
+    var json =  JSON.stringify(user);
+    localStorage.setItem(user,json);
+    console.log('user added');
+
+}

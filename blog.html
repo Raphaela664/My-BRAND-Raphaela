@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="textt/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="./main.css">
+    <title>Blog</title>
+</head>
+<body>
+    <div class="body-container">
+        <nav>
+            <h2 class="nav-logo">RM.</h2>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="#header">HOME</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#skills">SKILLS</a></li>
+                    <li><a href="#portfolio">PROJECTS</a></li>
+                    <li><a href="#blog">BLOG</a></li>
+                    <li><a href="#cta">CONTACT</a></li>
+                    <li><button class="hero-btn" onclick="window.location.href='./Login/login.html';">Login</button></li>
+                </ul>
+                
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <section class="blogPage">
+
+            <h1>How to Unlock the Power of Design Systems</h1>
+            <p>
+            Good design systems can help you create digital
+             products with efficiency and consistency. <br>
+             But great design systems will support and strengthen 
+             your team’s creativity at the same time.</p>
+
+            <p>Being a relatively new concept,
+                 there’s no one true way to implement design systems yet, <br>
+                  but several major companies have started creating systems for 
+                  their teams <br> and are already reaping the benefits.</p>
+
+            <p>Learn everything you need to get up and running with design systems in our free course!</p> 
+            <div class="showLove">
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+            <i class="fa fa-comment"></i>
+            </div>
+            
+            
+            
+
+            <h2>Comments</h2>
+            <div class="comment-section">
+                <form class="comments">
+                    <div class="input-group">
+                        <textarea id="message" rows="10" required oninvalid ="this.setCustomValidity('Please enter your message')" oninput ="this.setCustomValidity('')"></textarea>
+                        <label for="message"><i class="fa fa-comment"></i>  Leave a comment...</label>
+                    </div>
+                    <button type="submit">POST</button> 
+                </form>
+                
+
+            </div>
+        </section>
+    </div>
+</body>
+</html>
