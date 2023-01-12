@@ -536,7 +536,7 @@ textarea:valid~label
     padding-top: 50px;
 }
 
-.blogPage h1,h2, p{
+.blogPage h2, p{
     text-align: left;
 }
 .blogPage p{
@@ -555,6 +555,11 @@ textarea:valid~label
     text-align: left;
     font-size: 20px;
     margin-bottom: 5%;
+    margin-right: 5%;
+    
+}
+.showLove fa{
+    margin-left: 5%;
 }
 
 .comment-section form {
