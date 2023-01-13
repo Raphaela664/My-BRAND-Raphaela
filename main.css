@@ -5,12 +5,20 @@
    
     
 }
+html{
+    scroll-behavior: smooth;
+   
+}
+hr{
+    color: #252c6a;
+}
 .body-container{
     background: #000;
     color: #fff;
 }
 
 .header{
+    margin-top: 4%;
     min-height: 100vh;
     width: 100%; 
     position: relative;
@@ -22,10 +30,19 @@
 
 }
 nav{
+    height: 30px;
     display: flex;
     padding: 2% 6%;
     justify-content: space-between;
     align-items: center;
+    background: #000;
+    text-align: center;
+    top: 0px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index:5;
     
 }
 
@@ -51,6 +68,7 @@ nav{
     font-size: 13px;
    
 }
+ 
 .nav-links ul li::after{
     content: '';
     width: 0%;
@@ -200,6 +218,7 @@ nav .fa{
 
     .blog-row{
         flex-direction: column;
+        text-align: right;
     }
     .input-row{
         flex-direction: column;
@@ -226,6 +245,13 @@ nav .fa{
         transition: 1s;
     }
 
+    .blogform{
+        max-width: fit-content;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
     
 }
 
@@ -237,7 +263,7 @@ nav .fa{
     text-align: center;
     padding-top: 100px;
     color: #fff;
-
+    margin-bottom: 0;
 
 }
 .about-row{
@@ -274,7 +300,7 @@ nav .fa{
     width: 80%;
     margin: auto;
     text-align: center;
-    padding-top: 100px;
+    
 }
 
 h1{
@@ -349,6 +375,7 @@ p{
     width: 80%;
     text-align: center;
     padding-top: 50px;
+    margin-bottom: 0%;
 }
 
 .portfolio-col{
@@ -383,6 +410,8 @@ p{
     margin: auto;
     padding-top: 100px;
     text-align: center;
+    margin-bottom: 0;
+   
 }
 
 .blog-row{
@@ -392,12 +421,18 @@ p{
     text-align: left;
     background-color: #000;
     padding: 25px;
-    cursor: pointer;
     display: flex;
+}
+.blog-row .hero-btn{
+    width: 300px;
+    max-width: 400px;
+    text-align: center;
+    color: #fff;
 }
 
 .blog-col{
-    margin-left: 5%;
+
+    margin-right: 5%;
 }
 .blog-col p{
     padding-left: 0;
@@ -405,10 +440,15 @@ p{
 
 
 .blog a{
+    cursor: pointer;
+    display: block;
     text-decoration: none;
     color: #03465f;
 }
-
+.reactions i,p{
+    display: inline-block;
+}
+/*-------cta-----*/
 .cta h1{
     text-align: center;
     margin-bottom: 5%;
@@ -420,6 +460,7 @@ p{
     width: 80%;
     text-align: center;
     padding-top: 50px;
+    background-color: #000;
 }
 .cta-row{
     text-align: center;
@@ -523,25 +564,53 @@ textarea:valid~label
         margin-right:0 ;
     }
 }
-
+/*--------footer-------*/
+footer {
+    height: 70px;
+    width: 100%;
+    background-color: #252c6a;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    bottom: 0px;
+    
+}
 
 
 
 /*--------blog page------*/
 .blogPage{
+    margin-top: 50px;
     justify-content: center;
     margin-left:  5%;
     width: 80%;
     text-align: center;
     padding-top: 50px;
 }
-
+.blogImage{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    width: fit-content;
+    height: 450px;
+}
+.blogImage img{
+    width: 100%;
+    height: 100%;
+}
+.blogPara{
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
 .blogPage h2, p{
-    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
 }
-.blogPage p{
-    margin-right: -4%;
-}
+
+
 .comment-section{
     margin-top: 5%;
     display: flex;
@@ -556,14 +625,33 @@ textarea:valid~label
     font-size: 20px;
     margin-bottom: 5%;
     margin-right: 5%;
-    
+    margin-left: 2%;
 }
-.showLove fa{
-    margin-left: 5%;
+.blogPage h1{
+    margin-bottom: 5%;
+}
+.comment-section{
+    display: flex;
+    flex-direction: column;
+}
+.comments{
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    text-align: left;
+}
+.blogcontent{
+    width: 60%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .comment-section form {
+    margin-top: 5%;
     text-align: left;
+    
+    
 }
 
 .blogPage h2{
@@ -571,4 +659,16 @@ textarea:valid~label
 }
 .comment-section button{
     margin-bottom: 5%;
+}
+
+.blogform{
+    padding-top: 50px;
+    padding-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.blogPage span{
+    font-weight: 500;
+    color: #03465f;
 }
