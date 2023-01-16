@@ -68,6 +68,9 @@ nav{
     font-size: 13px;
    
 }
+ul li.active a{
+    color: #007f67;
+}
  
 .nav-links ul li::after{
     content: '';

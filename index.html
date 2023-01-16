@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="textt/javascript" src="script.js"></script>
     <link rel="stylesheet" href="./main.css">
+    
     <title>MY BRAND</title>
     
 
@@ -21,12 +21,12 @@
             <div class="nav-links" id="navLinks">
                 <i class="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
-                    <li><a href="#header">HOME</a></li>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#skills">SKILLS</a></li>
-                    <li><a href="#portfolio">PROJECTS</a></li>
-                    <li><a href="#blog">BLOG</a></li>
-                    <li><a href="#cta">CONTACT</a></li>
+                    <li class="links active" ><a  href="#header" >HOME</a></li>
+                    <li class="links"><a href="#about" >ABOUT</a></li>
+                    <li class="links"><a href="#skills" >SKILLS</a></li>
+                    <li class="links"><a href="#portfolio" >PROJECTS</a></li>
+                    <li class="links"><a href="#blog" >BLOG</a></li>
+                    <li class="links"><a href="#cta" >CONTACT</a></li>
                     <li><button class="hero-btn" onclick="window.location.href='./Login/login.html';">Login</button></li>
                 </ul>
                 
@@ -231,16 +231,8 @@
         
     </footer>
     </div>
-   
-   <script>
-    var navLinks = document.getElementById("navLinks");
-function showMenu(){
-    navLinks.style.right = "0";
-};
-function hideMenu(){
-    navLinks.style.right = "-200px";
-};
-   </script>
+
+    <script src="script.js"></script>
 </body>
 
     
