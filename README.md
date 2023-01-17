@@ -1,1 +1,2 @@
-# My-BRAND-Raphaela
+# my-brand
+Capstone project

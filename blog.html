@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="textt/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="./main.css">
+    <title>Blog</title>
+</head>
+<body>
+    <div class="body-container">
+        <nav>
+            <h2 class="nav-logo">RM.</h2>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="#header">HOME</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#skills">SKILLS</a></li>
+                    <li><a href="#portfolio">PROJECTS</a></li>
+                    <li><a href="#blog">BLOG</a></li>
+                    <li><a href="#cta">CONTACT</a></li>
+                    <li><button class="hero-btn" onclick="window.location.href='./Login/login.html';">Login</button></li>
+                </ul>
+                
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <section class="blogPage">
+            <h1>How to Unlock The Power of Design Systems</h1>
+            <div class="blogcontent">
+                
+                <div class="blogImage">
+                    <img src="./images/blog2.png">
+                </div>
+                <div class="blogPara">
+                    <p>
+                        Good design systems can help you create digital
+                        products with efficiency and consistency. 
+                        But great design systems will support and strengthen 
+                        your team’s creativity at the same
+                        being a relatively new concept,
+                        there’s no one true way to implement design systems yet, 
+                        but several major companies have started creating systems for 
+                        their teams and are already reaping the benefits.
+                        Learn everything you need to get up and running with design systems in our free course!</p>
+                </div>
+                <div class="blogPara">
+                    <p>
+                        There are many variations of passages of Lorem Ipsum available,
+                        but the majority have suffered alteration in some form, by injected humour,
+                        or randomised words which don't look even slightly believable. If you are going
+                        to use a passage of Lorem Ipsum, you need to be sure there isn't anything 
+                        embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet 
+                        tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
+                    </p>
+                </div>
+                
+                
+                <p><span>Author:</span> Sheldon Cooper</p>
+                <div class="showLove">
+                <i class="fa fa-thumbs-up"></i> <p>10</p>
+                <i class="fa fa-comment"></i> <p>2</p>
+                </div>
+            </div>
+            
+            
+            
+            
+
+            <h2>Comments</h2>
+            <div class="comment-section">
+                <div class="comments">
+    
+                    <p>It is a long established fact that a reader will be distracted by the readable
+                        content of a page when looking at its layout. The point of using Lorem Ipsum
+                        is that it has a more-or-less normal distribution of letters, as opposed to using
+                        'Content here, content here', making it look like readable English. Many desktop 
+                        publishing packages and web page editors now use Lorem Ipsum as their 
+                        default model text, and a search for 'lorem ipsum' will uncover many web sites 
+                        still in their infancy.
+                    </p>
+                    <p><span>02/15/2022</span> </p>
+                </div>
+                <div class="comments">
+    
+                    <p>It is a long established fact that a reader will be distracted by the readable
+                        content of a page when looking at its layout. The point of using Lorem Ipsum
+                        is that it has a more-or-less normal distribution of letters, as opposed to using
+                        'Content here, content here', making it look like readable English. Many desktop 
+                        publishing packages and web page editors now use Lorem Ipsum as their 
+                        default model text, and a search for 'lorem ipsum' will uncover many web sites 
+                        still in their infancy.
+                    </p>
+                    <p><span>02/15/2022</span> </p>
+                </div>
+
+                <form class="comments">
+                    <div class="input-group">
+                        <textarea id="message" rows="5"></textarea>
+                        <label for="message"><i class="fa fa-comment"></i>  Leave a comment...</label>
+                    </div>
+                    <button type="submit">POST</button> 
+                </form>
+                
+
+            </div>
+        </section>
+        <footer>
+            <p>@ copyrights belong to me!</p>
+            <i class="fa fa-github" aria-hidden="true"></i>
+        </footer>
+    </div>
+</body>
+</html>

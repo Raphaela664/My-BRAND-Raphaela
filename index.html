@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./main.css">
+    
+    <title>MY BRAND</title>
+    
+
+</head>
+<body >
+    <div class="body-container">
+        <nav>
+            <h2 class="nav-logo">RM.</h2>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li class="links active" ><a  href="#header" >HOME</a></li>
+                    <li class="links"><a href="#about" >ABOUT</a></li>
+                    <li class="links"><a href="#skills" >SKILLS</a></li>
+                    <li class="links"><a href="#portfolio" >PROJECTS</a></li>
+                    <li class="links"><a href="#blog" >BLOG</a></li>
+                    <li class="links"><a href="#cta" >CONTACT</a></li>
+                    <li><button class="hero-btn" onclick="window.location.href='./Login/login.html';">Login</button></li>
+                </ul>
+                
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <section class="header" id="header">
+        
+            <div class="text-box">
+                <h2> <span>Hi</span>, I'm Raphaela</h2>
+                <h3>And I'm a <span>Software Engineer</span></h3>
+                <a href="#cta" class="hero-btn">Contact Me</a>
+            </div>
+        </section>
+
+    <section class="about" id="about">
+        <h1 >About Me</h1>
+        <div class="about-row">
+           
+            <div class="about-col">
+                <div class="about-img">
+                    <img src="./images/about.jpg" alt="img">
+                </div>
+            </div>
+            <div class="about-col">
+                
+                <h2>Software Engineer</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <a href="https://raphaela664.github.io/raphaela.github.io/" class="hero-btn">View Resume</a>
+            </div>
+           
+        </div>
+
+        
+    </section> 
+    
+
+    <section class="skills" id="skills" >
+        <h1 >Skills</h1>
+        <div class="row row-1">
+            <div class="skills-col " id="skills-col1">
+                <h3>Web Design</h3>
+                <p>Lorem Ipsum has been the industry's <br> standard
+                    dummy text ever since the 1500s.</p>
+            </div>
+            <div class="skills-col">
+                <h3>SQL development</h3>
+                <p>Lorem Ipsum has been the industry's <br> standard
+                    dummy text ever since the 1500s.</p>
+            </div>
+        </div>
+        <div class="row row-2">
+            <div class="skills-col" id="skills-col1">
+                <h3>UIUX Design</h3>
+                <p>Lorem Ipsum has been the industry's <br> 
+                    standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="skills-col">
+                <h3>Cyber Security</h3>
+                <p>Lorem Ipsum has been the industry's <br> standard
+                    dummy text ever since the 1500s.</p>
+            </div>
+        </div>
+       
+    </section>
+    
+    <section class="portfolio" id="portfolio" >
+        <h1 >Portfolio</h1>
+        <div class="headings">
+            <h3>All</h3>
+            <h3>WEB DESIGN</h3>
+            <H3>UIUX DESIGN</H3>
+            <H3>SQL DEVELOPMENT</H3>
+            <H3>CYBER SECURITY</H3>
+            
+        </div>
+        
+        <div class="row row-1">
+            <div class="portfolio-col">
+                <img src="./images/port1.PNG" >
+            </div>
+            <div class="portfolio-col">
+                <img src="./images/port 6.png" >
+            </div>
+            <div class="portfolio-col">
+                <img src="./images/port2.jfif" >
+            </div>
+        </div>
+        <div class="row row-1">
+            <div class="portfolio-col">
+                <img src="./images/port4.jfif" >
+            </div>
+            <div class="portfolio-col">
+                <img src="./images/port5.jfif" >
+            </div>
+            <div class="portfolio-col">
+                <img src="./images/Emerging-web-design-trends-for-2021.jpeg" >
+            </div>
+        </div>
+        
+    </section>
+    
+    <section class="blog" id="blog">
+        <h1 >Latest From The Blog</h1>
+        <div class="blog-row">
+            <div class="blog-col">
+                <img src="./images/blog1.png">
+            </div>
+            
+            <div class="blog-col textplace">
+                <h3>How to Unlock the Power of Design Systems</h3>
+                <p>Good design systems can help you create digital 
+                products with efficiency and consistency. 
+                But great design systems will support and 
+                strengthen your team’s creativity at the same time.</p>
+                <p><b>Author:</b> Sheldon Cooper</p>
+                <a href="./blog.html">Read More...</a>
+                <div class="reaction">
+                    <i class="fa fa-thumbs-up" aria-hidden="true"></i><p>10</p>
+                    <i class="fa fa-comment"></i><p>2</p>
+                </div>
+            </div>   
+        </div>
+
+        <div class="blog-row">
+            <div class="blog-col">
+                <img src="./images/blog2.png">
+            </div>
+            <div class="blog-col textplace">
+                <h3>Web Accessibility: the Complete Learning Guide</h3>
+                <p>Web accessibility (often referred to by its abbreviated “a11y” form) 
+                   is something many internet users don’t think about,
+                   yet it affects almost all of us in some way. 
+                   Accessibility is about you, your friends, colleagues, and family members.
+                   It’s about having empathy for other internet users.
+                
+                </p>
+                <p><b>Author:</b> colby Wesley</p>
+                <a href="./blog.html">Read More...</a>
+                <div class="reaction">
+                    <i class="fa fa-thumbs-up"></i><p>8</p>
+                    <i class="fa fa-comment"></i><p>0</p>
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="blog-row">
+            <a href="./addBlog.html" class="hero-btn"><i class="fa fa-pencil-square-o"></i> Write your own blog</a>
+            
+        </div>
+      
+    </section>
+   
+    <section class="cta" id="cta">
+            <h1 >Get In Touch</h1>
+            <div class="cta-row">
+                <div class="cta-col">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <p>Call Me <br>
+                    +250783729100</p>
+                </div>
+                <div class="cta-col">
+                    <i class="fa fa-map-marker" ></i>
+                    <p>Address <br>
+                        Rwanda, Kigali</p>
+                </div>
+                <div class="cta-col">
+                    <i class="fa fa-envelope-o" ></i>
+                    <p>Email <br>
+                    mahoraphy02@gmail.com</p>
+                </div>
+            </div>
+            <div class="cta-form">
+                <form>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="text" name="FullName"  id="name" required oninvalid ="this.setCustomValidity('Please enter your name')" oninput ="this.setCustomValidity('')">
+                            <label for="name"><i class="fa fa-user"></i> Your Name</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="email"  id="email" required oninvalid ="this.setCustomValidity('Please enter your email')" oninput ="this.setCustomValidity('')">
+                            <label for="email"><i class="fa fa-envelope"></i> Your Email</label>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <textarea id="message" rows="10" required oninvalid ="this.setCustomValidity('Please enter your message')" oninput ="this.setCustomValidity('')"></textarea>
+                        <label for="message"><i class="fa fa-comment"></i> Your Message</label>
+                    </div>    
+                    
+                    
+                   <button type="submit">Send message</button>
+                </form>
+            </div>
+           
+    </section>
+    <footer>
+        <p>@ copyrights belong to me!</p>
+        
+    </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+    
+    
+</html>
