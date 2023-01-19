@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="textt/javascript" src="script.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script src="./blog.js"></script>
     <link rel="stylesheet" href="./main.css">
     <title>Create Blog</title>
 </head>
@@ -32,7 +33,7 @@
             <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
         <div class="cta-form blogform">
-            <form>
+            <form onsubmit="event.preventDefault();onFormSubmit();">
                 <div class="input-row">
                     <div class="input-group">
                         <input type="text" name="FullName"  id="name" required oninvalid ="this.setCustomValidity('Please enter your name')" oninput ="this.setCustomValidity('')">

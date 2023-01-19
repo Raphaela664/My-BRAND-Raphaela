@@ -19,20 +19,16 @@ function clearInputError(inputElement){
 function signup(e){
     event.preventDefault();
     //console.log('working')
+    let formData = JSON.parse(localStorage.getItem('formData')) || [];
+    formData.push({
+         username : document.getElementById('signupUsername').value,
+         password : document.getElementById('new-password').value,
+         email : document.getElementById("email").value
+    })
+    
+    localStorage.setItem('formData', JSON.stringify(formData));
+    
 
-    var username = document.getElementById('signupUsername').value;
-    var password = document.getElementById('new-password').value;
-    var email = document.getElementById("email").value
-
-    var user = {
-        username: username,
-        email: email,
-        password: password
-    };
-
-    var json =  JSON.stringify(user);
-    localStorage.setItem(user,json);
-    console.log('user added');
 
 }
 
@@ -87,4 +83,15 @@ function login(e){
     localStorage.setItem(user,json);
     console.log('user added');
 
+}
+function validate(){
+    var upass = document.sign.password1.value;
+    var cpass = document.sign.password2.value;
+    if(upass ==cpass){
+        document.getElementById("confirm").innerText="OK";
+        
+    }
+    else{
+        document.getElementById("confirm").innerText = "Please make sure passwords are the same"
+    }
 }
