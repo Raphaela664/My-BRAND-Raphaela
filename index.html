@@ -214,7 +214,7 @@
                             <label for="name"><i class="fa fa-user"></i> Your Name</label>
                         </div>
                         <div class="input-group">
-                            <input type="email"  id="email" required oninvalid ="this.setCustomValidity('Please enter your email')" oninput ="this.setCustomValidity('')">
+                            <input type="email"  id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Enter a proper email ID" required >
                             <label for="email"><i class="fa fa-envelope"></i> Your Email</label>
                         </div>
                     </div>

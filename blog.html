@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="textt/javascript" src="script.js"></script>
     <link rel="stylesheet" href="./main.css">
     <title>Blog</title>
 </head>
@@ -64,7 +63,7 @@
                 
                 <p><span>Author:</span> Sheldon Cooper</p>
                 <div class="showLove">
-                <i class="fa fa-thumbs-up"></i> <p>10</p>
+                <i class="fa fa-thumbs-o-up" id="like"></i> <p class="count">10</p>
                 <i class="fa fa-comment"></i> <p>2</p>
                 </div>
             </div>
@@ -99,13 +98,16 @@
                     </p>
                     <p><span>02/15/2022</span> </p>
                 </div>
+                <div class="comments" id="add-new-comment">
+
+                </div>
 
                 <form class="comments">
                     <div class="input-group">
                         <textarea id="message" rows="5"></textarea>
                         <label for="message"><i class="fa fa-comment"></i>  Leave a comment...</label>
                     </div>
-                    <button type="submit">POST</button> 
+                    <button type="submit" id="submit" onclick="addComment">POST</button> 
                 </form>
                 
 
@@ -116,5 +118,7 @@
             <i class="fa fa-github" aria-hidden="true"></i>
         </footer>
     </div>
+    <script type="text/javascript" src="script.js"></script>
+    <script src="blog.js"></script>
 </body>
 </html>

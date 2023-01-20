@@ -21,11 +21,11 @@ function signup(e){
     //console.log('working')
     let formData = JSON.parse(localStorage.getItem('formData')) || [];
     formData.push({
-         username : document.getElementById('signupUsername').value,
-         password : document.getElementById('new-password').value,
-         email : document.getElementById("email").value
+        username : document.getElementById('signupUsername').value,
+        password : document.getElementById('new-password').value,
+        email : document.getElementById("email").value
     })
-    
+        
     localStorage.setItem('formData', JSON.stringify(formData));
     
 
@@ -70,28 +70,39 @@ document.addEventListener("DOMContentLoaded", () =>{
 function login(e){
     event.preventDefault();
     //console.log('working')
+    var enterUsername =  document.getElementById('username--email').value;
+    var enterPass = document.getElementById('password');
 
-    var username = document.getElementById('username--email').value;
-    var password = document.getElementById('password').value;
+    var getData= localStorage.getItem('formData');
+    
+    if(JSON.parse(getData));
 
-    var user = {
-        username: username,
-        password: password
-    };
-
-    var json =  JSON.stringify(user);
-    localStorage.setItem(user,json);
-    console.log('user added');
 
 }
-function validate(){
+function verifyPass(){
     var upass = document.sign.password1.value;
     var cpass = document.sign.password2.value;
+    
     if(upass ==cpass){
+       
         document.getElementById("confirm").innerText="OK";
         
     }
     else{
         document.getElementById("confirm").innerText = "Please make sure passwords are the same"
     }
+}
+function validateEmail(){
+    
+    var email = document.getElementById('email').value;
+    var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if(email.match(pattern)){
+        document.getElementById('email-error').innerText = "This email Id is valid";
+    }else{
+        document.getElementById('email-error').innerText = "This email Id is invalid";
+    }
+   
+    
+  
 }
