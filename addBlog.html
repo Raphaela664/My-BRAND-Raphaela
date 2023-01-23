@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="script.js"></script>
+    
     <script src="./blog.js"></script>
     <link rel="stylesheet" href="./main.css">
     <title>Create Blog</title>
@@ -20,27 +20,27 @@
             <div class="nav-links" id="navLinks">
                 <i class="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
-                    <li><a href="#header">HOME</a></li>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#skills">SKILLS</a></li>
-                    <li><a href="#portfolio">PROJECTS</a></li>
-                    <li><a href="#blog">BLOG</a></li>
-                    <li><a href="#cta">CONTACT</a></li>
-                    <li><button class="hero-btn" onclick="window.location.href='./Login/login.html';">Login</button></li>
+                    <li class="links"><a href="#header">HOME</a></li>
+                    <li class="links"><a href="#about">ABOUT</a></li>
+                    <li class="links"><a href="#skills">SKILLS</a></li>
+                    <li class="links"><a href="#portfolio">PROJECTS</a></li>
+                    <li class="links"><a href="#blog">BLOG</a></li>
+                    <li class="links"><a href="#cta">CONTACT</a></li>
+                    <li class="links"><button class="hero-btn" onclick="window.location.href='./Login/login.html';">Login</button></li>
                 </ul>
                 
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
         <div class="cta-form blogform">
-            <form onsubmit="event.preventDefault();onFormSubmit();">
+            <form onsubmit="blogSubmit();">
                 <div class="input-row">
                     <div class="input-group">
                         <input type="text" name="FullName"  id="name" required oninvalid ="this.setCustomValidity('Please enter your name')" oninput ="this.setCustomValidity('')">
                         <label for="name"><i class="fa fa-user"></i> Your Name</label>
                     </div>
                     <div class="input-group">
-                        <input type="email"  id="email" required oninvalid ="this.setCustomValidity('Please enter your email')" oninput ="this.setCustomValidity('')">
+                        <input type="email"  id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Enter a proper email ID" required >
                         <label for="email"><i class="fa fa-envelope"></i> Your Email</label>
                     </div>
                 </div>
@@ -68,5 +68,6 @@
             <i class="fa fa-github" aria-hidden="true"></i>
         </footer>
     </div>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

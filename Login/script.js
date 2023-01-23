@@ -16,17 +16,30 @@ function clearInputError(inputElement){
     inputElement.parentElement.querySelector(".form__input-error-message").textContent="";
 }
 
-function signup(e){
-    event.preventDefault();
+function signup(){
+    
     //console.log('working')
-    let formData = JSON.parse(localStorage.getItem('formData')) || [];
-    formData.push({
+    let SignupFormData = JSON.parse(localStorage.getItem('SignupFormData')) || [];
+    signupUser={
         username : document.getElementById('signupUsername').value,
         password : document.getElementById('new-password').value,
         email : document.getElementById("email").value
-    })
+    }
+    let userKeys = Object.keys(signupUser);
+    let users = SignupFormData;
+    console.log(SignupFormData);
+    let info = users.filter(obj => userKeys.every(key => obj.hasOwnProperty(key) &&
+    obj[key] === signupUser[key]));
+    console.log(info);
+    if(info.length ===0){
+        SignupFormData.push(signupUser);
+        localStorage.setItem('SignupFormData', JSON.stringify(SignupFormData));
         
-    localStorage.setItem('formData', JSON.stringify(formData));
+    }
+    else{
+        document.getElementById('signup-form-message').innerText='User already exists';
+    }
+    
     
 
 
@@ -70,15 +83,41 @@ document.addEventListener("DOMContentLoaded", () =>{
 function login(e){
     event.preventDefault();
     //console.log('working')
-    var enterUsername =  document.getElementById('username--email').value;
-    var enterPass = document.getElementById('password');
-
-    var getData= localStorage.getItem('formData');
-    
-    if(JSON.parse(getData));
-
-
+    var getData= localStorage.getItem('SignupFormData');
+    let users = JSON.parse(getData);
+    console.log(users);
+    let user = {
+        username :  document.getElementById('username--email').value,
+        password : document.getElementById('login-password').value
+    }
+    let userKeys = Object.keys(user);
+    let LoginFormData;
+    let info = users.filter(obj => userKeys.every(key => obj.hasOwnProperty(key) &&
+    obj[key] === user[key])); 
+    console.log(info);
+    if(info.length===0){
+        document.getElementById('login_form_message_error').innerText='Wrong Username/Password Combination';
+    }
+     else{
+        
+        LoginFormData = JSON.parse(localStorage.getItem('LoginFormData')) || [];
+        LoginFormData.push(user);
+        localStorage.setItem('LoginFormData', JSON.stringify(LoginFormData));
+        console.log('it works');
+    }
+  
+        
 }
+    
+            
+    
+    
+    
+    
+    
+
+
+
 function verifyPass(){
     var upass = document.sign.password1.value;
     var cpass = document.sign.password2.value;

@@ -52,7 +52,7 @@ body{
 }
 .container{
     display: grid;
-    width: 96%;
+    width: 100%;
     margin: 0 auto;
     gap: 1.8rem;
     grid-template-columns: 14rem auto 23rem;
@@ -130,7 +130,7 @@ aside .top{
     
 }
 aside .logo{
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
 aside .logo h2{
     display: inline;
@@ -356,9 +356,10 @@ main .recent-activities a{
 }
 
 .right{
-    margin-top: 1.rem;
+    margin-top: 2rem;
 }
 .right .top{
+
     display: flex;
     justify-content: end;
     gap: 2rem;
@@ -473,6 +474,7 @@ main .recent-activities a{
         width: 94%;
         grid-template-columns: 7rem auto 23rem;
    }
+   
    aside .sidebar h3{
     display: none;
    }
@@ -509,7 +511,7 @@ main .recent-activities a{
     aside{
         position: fixed;
         left: -100%;
-        background: var(--color-sidebars);
+        background: var(--color-primary);
         width: 18rem;
         z-index: 3;
         box-shadow: 1rem 3rem 4rem var(--color-light);
