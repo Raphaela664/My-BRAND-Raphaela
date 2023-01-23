@@ -101,7 +101,7 @@ function login(){
     let adminKeys = Object.keys(admin);
     let findAdmin=users.filter(obj => adminKeys.every(key => obj.hasOwnProperty(key) &&
     obj[key] === admin[key]));
-    console.log(findAdmin);
+    
     if(info.length===0){
         document.getElementById('login_form_message_error').innerText='Wrong Username/Password Combination';
     }
@@ -110,7 +110,7 @@ function login(){
         LoginFormData = JSON.parse(localStorage.getItem('LoginFormData')) || [];
         LoginFormData.push(user);
         localStorage.setItem('LoginFormData', JSON.stringify(LoginFormData));
-        console.log('it works');
+        console.log('Normal User');
      }
      else{
         LoginFormData = JSON.parse(localStorage.getItem('LoginFormData')) || [];
