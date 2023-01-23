@@ -525,6 +525,9 @@ main .recent-activities a{
             left:0
         }
     }
+    .hero-btn{
+        cursor: pointer;
+    }
     aside .logo{
         margin-left: 1rem;
     }
@@ -607,3 +610,27 @@ main .recent-activities a{
 
 }
 
+/*-----------------------Blog-Dashboard------------------------*/
+
+.blog-header{
+    text-align: center;
+}
+.hero-btn{
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-secondary);
+    border: 1px solid var(--color-info-dark);
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    justify-content: center;
+    
+}
+.hero-btn:hover{
+    border: 1px solid #009579;
+    background: #009579;
+    color: var(--color-font);
+    transition: 1s;
+}

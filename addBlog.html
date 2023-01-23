@@ -36,7 +36,7 @@
             <form onsubmit="blogSubmit();">
                 <div class="input-row">
                     <div class="input-group">
-                        <input type="text" name="FullName"  id="name" required oninvalid ="this.setCustomValidity('Please enter your name')" oninput ="this.setCustomValidity('')">
+                        <input type="text" name="FullName"  id="name" required>
                         <label for="name"><i class="fa fa-user"></i> Your Name</label>
                     </div>
                     <div class="input-group">
@@ -59,7 +59,7 @@
                 </div>    
                 
                 
-               <button type="submit">Post Blog</button>
+               <button type="submit" onclick="window.location.href='dashboard.html';">Post Blog</button>
             </form>
         </div>
         

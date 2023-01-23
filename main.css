@@ -115,6 +115,7 @@ ul li.active a{
     position: relative;
     cursor: pointer;
     justify-content: center;
+    text-align: center;
     
 }
 .header .hero-btn{

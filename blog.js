@@ -1,5 +1,5 @@
 function blogSubmit(e){
-    event.preventDefault();
+    event.preventDefault
     //console.log('working')
     let blogFormData = JSON.parse(localStorage.getItem('blogFormData')) || [];
     blogFormData.push({
@@ -11,6 +11,7 @@ function blogSubmit(e){
     })
         
     localStorage.setItem('blogFormData', JSON.stringify(blogFormData));
+    window.location ='./dashboard.html';
     
 
 

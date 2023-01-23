@@ -80,8 +80,8 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 
 
-function login(e){
-    event.preventDefault();
+function login(){
+    
     //console.log('working')
     var getData= localStorage.getItem('SignupFormData');
     let users = JSON.parse(getData);
@@ -94,16 +94,33 @@ function login(e){
     let LoginFormData;
     let info = users.filter(obj => userKeys.every(key => obj.hasOwnProperty(key) &&
     obj[key] === user[key])); 
-    console.log(info);
+    let admin = {
+        username : 'Administrator',
+        password : 'Test123@'
+    }
+    let adminKeys = Object.keys(admin);
+    let findAdmin=users.filter(obj => adminKeys.every(key => obj.hasOwnProperty(key) &&
+    obj[key] === admin[key]));
+    console.log(findAdmin);
     if(info.length===0){
         document.getElementById('login_form_message_error').innerText='Wrong Username/Password Combination';
     }
-     else{
-        
+    else{
+     if(findAdmin.length===0){
         LoginFormData = JSON.parse(localStorage.getItem('LoginFormData')) || [];
         LoginFormData.push(user);
         localStorage.setItem('LoginFormData', JSON.stringify(LoginFormData));
         console.log('it works');
+     }
+     else{
+        LoginFormData = JSON.parse(localStorage.getItem('LoginFormData')) || [];
+        LoginFormData.push(user);
+        localStorage.setItem('LoginFormData', JSON.stringify(LoginFormData));
+        console.log('Admin here');
+    
+     }
+        
+        
     }
   
         
