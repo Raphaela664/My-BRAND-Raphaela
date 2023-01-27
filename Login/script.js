@@ -168,3 +168,17 @@ function validateEmail(){
     
   
 }
+
+const findState = ()=>{
+    event.preventDefault();
+    const status = document.querySelector('#Login');
+    const success = (position) =>{
+        console.log(position);
+    }
+    const error = ()=>{
+        status.textContent = 'Unable to retrieve your location';
+    }
+    navigator.geolocation.getCurrentPosition(success,error);
+
+}
+document.querySelector('#Login-button').addEventListener('click', findState);

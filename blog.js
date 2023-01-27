@@ -17,7 +17,7 @@ function blogSubmit(e){
 
 function blogComment(e){
     event.preventDefault();
-    let getCommentData = JSON.parse(localStorage.getItem('getCommentData')) || [];
+    let getCommentData = JSON.parse(localStorage.getItem('getCommentData')) ||[];
     const date = new Date();
 
     let day = date.getDate();
@@ -44,3 +44,19 @@ function blogComment(e){
     getCommentData.push(comments);
     localStorage.setItem('getCommentData', JSON.stringify(getCommentData));
 }
+
+function retrieveData(){
+    let showComment = JSON.parse(localStorage.getItem('getCommentData'))
+    for(let i =0 ; i<showComment.length; i++){
+        let div = document.createElement('div');
+        div.classList.add('comments');
+        let containerDiv = document.querySelector('#comments-post');
+        containerDiv.appendChild(div);
+        let html = `<p>${showComment[i].comment}<p> <br>
+                    <span>${showComment[i].date}</span>`;
+        div.insertAdjacentHTML('afterbegin',html);
+
+        
+    }
+}
+ 

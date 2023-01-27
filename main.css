@@ -666,7 +666,9 @@ footer {
 .comment-section button{
     margin-bottom: 5%;
 }
-
+.comment-section .comments span{
+    display: block;
+}
 .blogform{
     padding-top: 50px;
     padding-bottom: 30px;

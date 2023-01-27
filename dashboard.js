@@ -33,7 +33,8 @@ function UserRegistration(){
         let html =`<h2>User</h2> 
         <p>${showData[i].username} <br>
         <p>${showData[i].email}<br>
-        <p>${showData[i].password}</P>`
+        <p>${showData[i].password}</P>
+        <button class="hero-btn delete-btn data">Delete</button>`
         div.insertAdjacentHTML('afterbegin',html);
     }
     
@@ -50,7 +51,9 @@ function retrieveQueries(){
         let html =`<h2>Query</h2> 
         <p><b>Username:</b> ${showData[i].Name} <br>
         <p><b>Email: </b>${showData[i].Email}<br>
-        <p><b>Message: </b>${showData[i].Message}</P>`
+        <p><b>Message: </b>${showData[i].Message}</P>
+        <button class="hero-btn delete-btn data">Delete</button>
+        `
         div.insertAdjacentHTML('afterbegin',html)
         ;
     }
@@ -58,7 +61,7 @@ function retrieveQueries(){
 }
 function retrieveBlogs(){
     let showData = JSON.parse(localStorage.getItem('blogFormData'));
-    let btn = ``;
+    
 
     for(let i =0; i<showData.length; i++){
         let div = document.createElement('div');
@@ -72,11 +75,38 @@ function retrieveBlogs(){
         let year = date.getFullYear();
         let currentDate = `${day}/${month}/${year}`;
         let html = `<tr>
-                    <td>${showData[i].title}</td>
-                    <td>${currentDate}</td>
+                    <td class="data">${showData[i].title}</td>
+
+                    <td class="data">${currentDate}</td>
+                    <td><button class="hero-btn delete-btn data">Delete</button></td>
                     </tr>`;
         div.insertAdjacentHTML('afterbegin',html);
-        let btn = `<button class="hero-btn">Delete</button>`;
+       
+
+        
     }
 }
+const tableEl = document.querySelector('tbody');
+tableEl.addEventListener('click',deleteRow);
+const userDiv = document.querySelector('.users-list');
+userDiv.addEventListener('click', deleteUserList);
+const queryDiv = document.querySelector('.queries-list');
+queryDiv.addEventListener('click', deleteRow);
 
+function deleteUserList(){
+    if(e.target.classList.contains('delete-btn')){
+        const btn = e.target;
+        btn.parentNode.parentNode.remove();
+        
+    }  
+}
+
+ function deleteRow(e){
+  if(e.target.classList.contains('delete-btn')){
+            const btn = e.target;
+            btn.parentNode.remove();
+            
+        }
+        
+        
+    }
