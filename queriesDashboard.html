@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+    
+    <link rel="stylesheet" href="./styling.css">
+
+    <title>Queries</title>
+
+</head>
+<body onload="retrieveQueries();">
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <h2>RM.</h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+       
+            <div class="sidebar" id="sidebar">
+                <a href="dashboard.html" class="link ">
+                    <span class="material-icons-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="blogDashboard.html" class="link">
+                    <span class="material-icons-sharp">article</span>
+                    <h3>Blogs</h3>
+                </a>
+                <a href="userDashboard.html" class="link">
+                    <span class="material-icons-sharp">query_stats</span>
+                    <h3>Analytics</h3>
+                </a>
+                <a href="queriesDashboard.html" class="link active">
+                    <span class="material-icons-sharp">chat</span>
+                    <h3>View Queries</h3>
+                    <span class="message-count">26</span>
+                </a>
+                <a href="#" class="link">
+                    <span class="material-icons-sharp">settings</span>
+                    <h3>Settings</h3>
+                </a>
+                <a href="./index.html">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!--END OF LEFT SIDEBAR-->
+        <main>
+            <div class="queries-header">
+                <h1>Queries</h1>
+            </div>
+            
+            <div class="queries-list">
+            
+                
+            </div>
+            
+            
+        </main>
+        <!----------------------------END OF MAIN--------------------->
+        <div class="right">
+            <div class="top">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                
+                <div class="profile">
+                    <div class="info">
+                        <p><b>Raphaela</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="./images/passport.JPG" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-----------END OF TOP-------->
+            <div class="recent-updates">
+                <h2>Recent Updates</h2>
+                <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="./images/profile1.jfif" alt="">
+                        </div>
+                        <div class="message">
+                            <p><b>Sheldon Cooper</b> created an a acccount</p>
+                            <small class="text-muted">5 hrours Ago</small>
+                        </div>
+                    </div>
+                    <div class="update">
+                        <div class="profile-photo">
+                            <img src="./images/profil2.jfif" alt="">
+                        </div>
+                        <div class="message">
+                            <p><b>Rachel Green</b> commented on a blog</p>
+                            <small class="text-muted">2 minutes Ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-----------------END OF RECENT UPDATES-------------->
+            <div class="Analytics">
+                <h2>Analytics</h2>
+                <div class="item onlinee">
+                    <div class="icon">
+                        <span class="material-icons-sharp">people</span>
+                    </div>
+                    <div class="right">
+                        <div class="info">
+                            <h3>Online Accounts</h3>
+                            <small class="text-muted">Last 24 Hours</small>
+                        </div>
+                        <h5 class="success">+5%</h5>
+                        <h3>5 people</h3>
+                    </div>
+                </div>
+                <div class="item positive">
+                    <div class="icon">
+                        <span class="material-icons-sharp">sentiment_satisfied</span>
+                    </div>
+                    <div class="right">
+                        <div class="info">
+                            <h3>Positive reviews</h3>
+                            <small class="text-muted">Last 24 Hours</small>
+                        </div>
+                        <h5 class="success">+2%</h5>
+                        <h3>2 people</h3>
+                    </div>
+                </div>
+                <div class="item negative">
+                    <div class="icon">
+                        <span class="material-icons-sharp">sentiment_dissatisfied</span>
+                    </div>
+                    <div class="right">
+                        <div class="info">
+                            <h3>Negative reviews</h3>
+                            <small class="text-muted">Last 24 Hours</small>
+                        </div>
+                        <h5 class="success">+1%</h5>
+                        <h3>1 person</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./dashboard.js"></script>
+</body>
+</html>

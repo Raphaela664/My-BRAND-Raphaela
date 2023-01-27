@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <script src="./blog.js"></script>
+    
     <link rel="stylesheet" href="./main.css">
     <title>Create Blog</title>
 </head>
@@ -26,7 +27,7 @@
                     <li class="links"><a href="#portfolio">PROJECTS</a></li>
                     <li class="links"><a href="#blog">BLOG</a></li>
                     <li class="links"><a href="#cta">CONTACT</a></li>
-                    <li class="links"><button class="hero-btn" onclick="window.location.href='./Login/login.html';">Login</button></li>
+                    <li class="links"><button class="hero-btn" onclick="window.location.href='./index.html';">Logout</button></li>
                 </ul>
                 
             </div>
@@ -36,12 +37,8 @@
             <form onsubmit="blogSubmit();">
                 <div class="input-row">
                     <div class="input-group">
-                        <input type="text" name="FullName"  id="name" required>
-                        <label for="name"><i class="fa fa-user"></i> Your Name</label>
-                    </div>
-                    <div class="input-group">
-                        <input type="email"  id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Enter a proper email ID" required >
-                        <label for="email"><i class="fa fa-envelope"></i> Your Email</label>
+                        <input type="text" name="FullName"  id="title" required>
+                        <label for="name"><i class="fa fa-user"></i> Blog Title</label>
                     </div>
                 </div>
                 <div class="input-group">
@@ -59,7 +56,7 @@
                 </div>    
                 
                 
-               <button type="submit" onclick="window.location.href='dashboard.html';">Post Blog</button>
+               <button type="submit">Post Blog</button>
             </form>
         </div>
         

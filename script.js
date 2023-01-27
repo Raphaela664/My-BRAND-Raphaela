@@ -17,3 +17,19 @@ for(var i=0; i<btns.length; i++){
 
     })
 }
+
+function sendQuery(){
+    event.preventDefault();
+    let contactFormData = JSON.parse(localStorage.getItem('contactFormData')) || [];
+    let contactData = {
+        Name : document.getElementById("name").value,
+        Email : document.getElementById("email").value,
+        Message: document.getElementById("message").value
+
+    }
+    contactFormData.push(contactData);
+    localStorage.setItem('contactFormData', JSON.stringify(contactFormData));
+
+    
+
+}

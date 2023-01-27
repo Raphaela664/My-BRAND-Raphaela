@@ -184,7 +184,7 @@
       
     </section>
    
-    <section class="cta" id="cta">
+    <section class="cta get-in-touch" id="cta" >
             <h1 >Get In Touch</h1>
             <div class="cta-row">
                 <div class="cta-col">
@@ -204,10 +204,10 @@
                 </div>
             </div>
             <div class="cta-form">
-                <form>
+                <form onsubmit="sendQuery()">
                     <div class="input-row">
                         <div class="input-group">
-                            <input type="text" name="FullName"  id="name" required oninvalid ="this.setCustomValidity('Please enter your name')" oninput ="this.setCustomValidity('')">
+                            <input type="text" name="FullName"  id="name" required>
                             <label for="name"><i class="fa fa-user"></i> Your Name</label>
                         </div>
                         <div class="input-group">
@@ -217,7 +217,7 @@
                     </div>
                     
                     <div class="input-group">
-                        <textarea id="message" rows="10" required oninvalid ="this.setCustomValidity('Please enter your message')" oninput ="this.setCustomValidity('')"></textarea>
+                        <textarea id="message" rows="10" required></textarea>
                         <label for="message"><i class="fa fa-comment"></i> Your Message</label>
                     </div>    
                     

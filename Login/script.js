@@ -27,7 +27,6 @@ function signup(){
     }
     let userKeys = Object.keys(signupUser);
     let users = SignupFormData;
-    console.log(SignupFormData);
     let info = users.filter(obj => userKeys.every(key => obj.hasOwnProperty(key) &&
     obj[key] === signupUser[key]));
     console.log(info);
@@ -80,8 +79,8 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 
 
-function login(){
-    
+function login(e){
+    event.preventDefault();
     //console.log('working')
     var getData= localStorage.getItem('SignupFormData');
     let users = JSON.parse(getData);
@@ -101,30 +100,37 @@ function login(){
     let adminKeys = Object.keys(admin);
     let findAdmin=users.filter(obj => adminKeys.every(key => obj.hasOwnProperty(key) &&
     obj[key] === admin[key]));
-    
-    if(info.length===0){
-        document.getElementById('login_form_message_error').innerText='Wrong Username/Password Combination';
+    console.log(info.length);
+    console.log(adminKeys.length);
+    console.log(admin);
+    console.log(user);
+    if(info.length!==0){
+        if(JSON.stringify(admin)!==JSON.stringify(user)){
+            LoginFormData = JSON.parse(localStorage.getItem('LoginFormData')) || [];
+            LoginFormData.push(user);
+            localStorage.setItem('LoginFormData', JSON.stringify(LoginFormData));
+            console.log('it works');
+            location.assign('../blog.html');
+         }
+         else{
+            LoginFormData = JSON.parse(localStorage.getItem('LoginFormData')) || [];
+            LoginFormData.push(user);
+            localStorage.setItem('LoginFormData', JSON.stringify(LoginFormData));
+            console.log('Admin here');
+            location.assign('../dashboard.html');
+         }
     }
     else{
-     if(findAdmin.length===0){
-        LoginFormData = JSON.parse(localStorage.getItem('LoginFormData')) || [];
-        LoginFormData.push(user);
-        localStorage.setItem('LoginFormData', JSON.stringify(LoginFormData));
-        console.log('Normal User');
-     }
-     else{
-        LoginFormData = JSON.parse(localStorage.getItem('LoginFormData')) || [];
-        LoginFormData.push(user);
-        localStorage.setItem('LoginFormData', JSON.stringify(LoginFormData));
-        console.log('Admin here');
-    
-     }
+        document.getElementById('login_form_message_error').innerText='Wrong Username/Password Combination';
+       
+    }
+     
         
         
     }
   
         
-}
+
     
             
     

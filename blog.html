@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./main.css">
+    <script src="blog.js"></script>
     <title>Blog</title>
 </head>
 <body>
@@ -18,13 +19,13 @@
             <div class="nav-links" id="navLinks">
                 <i class="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
-                    <li><a href="#header">HOME</a></li>
+                    <li><a href="index.html">HOME</a></li>
                     <li><a href="#about">ABOUT</a></li>
                     <li><a href="#skills">SKILLS</a></li>
                     <li><a href="#portfolio">PROJECTS</a></li>
                     <li><a href="#blog">BLOG</a></li>
                     <li><a href="#cta">CONTACT</a></li>
-                    <li><button class="hero-btn" onclick="window.location.href='./Login/login.html';">Login</button></li>
+                    <li><button class="hero-btn" onclick="window.location.href='./Login/login.html';">Logout</button></li>
                 </ul>
                 
             </div>
@@ -73,41 +74,41 @@
             
 
             <h2>Comments</h2>
-            <div class="comment-section">
-                <div class="comments">
+            <div class="comment-section" name="comments-area">
+                <div id="comments-post">
+                    <div class="comments">
     
-                    <p>It is a long established fact that a reader will be distracted by the readable
-                        content of a page when looking at its layout. The point of using Lorem Ipsum
-                        is that it has a more-or-less normal distribution of letters, as opposed to using
-                        'Content here, content here', making it look like readable English. Many desktop 
-                        publishing packages and web page editors now use Lorem Ipsum as their 
-                        default model text, and a search for 'lorem ipsum' will uncover many web sites 
-                        still in their infancy.
-                    </p>
-                    <p><span>02/15/2022</span> </p>
+                        <p>It is a long established fact that a reader will be distracted by the readable
+                            content of a page when looking at its layout. The point of using Lorem Ipsum
+                            is that it has a more-or-less normal distribution of letters, as opposed to using
+                            'Content here, content here', making it look like readable English. Many desktop 
+                            publishing packages and web page editors now use Lorem Ipsum as their 
+                            default model text, and a search for 'lorem ipsum' will uncover many web sites 
+                            still in their infancy.
+                        </p>
+                        <p><span>15/02/2022</span> </p>
+                    </div>
+                    <div class="comments">
+        
+                        <p>It is a long established fact that a reader will be distracted by the readable
+                            content of a page when looking at its layout. The point of using Lorem Ipsum
+                            is that it has a more-or-less normal distribution of letters, as opposed to using
+                            'Content here, content here', making it look like readable English. Many desktop 
+                            publishing packages and web page editors now use Lorem Ipsum as their 
+                            default model text, and a search for 'lorem ipsum' will uncover many web sites 
+                            still in their infancy.
+                        </p>
+                        <p><span>15/02/2022</span> </p>
+                    </div>
                 </div>
-                <div class="comments">
-    
-                    <p>It is a long established fact that a reader will be distracted by the readable
-                        content of a page when looking at its layout. The point of using Lorem Ipsum
-                        is that it has a more-or-less normal distribution of letters, as opposed to using
-                        'Content here, content here', making it look like readable English. Many desktop 
-                        publishing packages and web page editors now use Lorem Ipsum as their 
-                        default model text, and a search for 'lorem ipsum' will uncover many web sites 
-                        still in their infancy.
-                    </p>
-                    <p><span>02/15/2022</span> </p>
-                </div>
-                <div class="comments" id="add-new-comment">
+                
 
-                </div>
-
-                <form class="comments">
+                <form class="comments" onsubmit="blogComment()">
                     <div class="input-group">
                         <textarea id="message" rows="5"></textarea>
                         <label for="message"><i class="fa fa-comment"></i>  Leave a comment...</label>
                     </div>
-                    <button type="submit" id="submit" onclick="addComment">POST</button> 
+                    <button type="submit" id="submit">POST</button> 
                 </form>
                 
 
@@ -119,6 +120,6 @@
         </footer>
     </div>
     <script type="text/javascript" src="script.js"></script>
-    <script src="blog.js"></script>
+    
 </body>
 </html>
