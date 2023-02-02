@@ -15,6 +15,8 @@ hr{
 .body-container{
     background: #000;
     color: #fff;
+    user-select: none;
+    overflow: hidden;
 }
 
 .header{
@@ -113,6 +115,7 @@ ul li.active a{
     position: relative;
     cursor: pointer;
     justify-content: center;
+    text-align: center;
     
 }
 .header .hero-btn{
@@ -663,7 +666,9 @@ footer {
 .comment-section button{
     margin-bottom: 5%;
 }
-
+.comment-section .comments span{
+    display: block;
+}
 .blogform{
     padding-top: 50px;
     padding-bottom: 30px;
@@ -674,4 +679,50 @@ footer {
 .blogPage span{
     font-weight: 500;
     color: #03465f;
+}
+.blogPage .blogcontent .showLove i{
+    cursor: pointer;
+}
+
+.popup{
+    width: 200px;
+    align-self: center;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    transform: translate(-50px,-50px) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+.open-popup{
+    visibility: visible;
+    transform: translate(-50%,-50%) scale(1);
+}
+.popup button{
+    background: #007f67;
+    width: 80%;
+    margin-top: 30px;
+    padding: 10px 0;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+    }
+.popup img{
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50px;
+    box-shadow: 0 2 px 5px rgba(0,0,0,0.2);
+}
+
+.popup h2{
+    font-size: 20px;
+    font-weight: 500px;
+    margin: 30px 0 10px;
 }

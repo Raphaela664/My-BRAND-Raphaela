@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
     
     <link rel="stylesheet" href="./styling.css">
-    <title>Dashboard</title>
+
+    <title>Admin-Blogs</title>
 
 </head>
-<body>
+<body onload="UserRegistration();">
     <div class="container">
         <aside>
             <div class="top">
@@ -27,15 +28,15 @@
             </div>
        
             <div class="sidebar" id="sidebar">
-                <a href="dashboard.html" class=" link active">
+                <a href="dashboard.html" class="link ">
                     <span class="material-icons-sharp">grid_view</span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="./blogDashboard.html" class="link" >
-                    <span class="material-icons-sharp">articles</span>
+                <a href="blogDashboard.html" class="link">
+                    <span class="material-icons-sharp">article</span>
                     <h3>Blogs</h3>
                 </a>
-                <a href="userDashboard.html" class="link">
+                <a href="userDashboard.html" class="link active">
                     <span class="material-icons-sharp">query_stats</span>
                     <h3>Analytics</h3>
                 </a>
@@ -60,103 +61,15 @@
         </aside>
         <!--END OF LEFT SIDEBAR-->
         <main>
-            <h1>Dashboard</h1>
-            <div class="date">
-                <input type="date">
+            <div class="users-header">
+                <h1>Registered Users</h1>
             </div>
-            <div class="insights">
-                <div class="blogs-created">
-                    <span class="material-icons-sharp">analytics</span>         
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Total Blogs</h3>
-                            <h1>30</h1>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx = '38' cy="38" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p>50%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <small class="text-muted"> Last 24 hours</small>
-                </div>
-                <!-----------------End of Blogs----------->
-                <div class="online">
-                    <span class="material-icons-sharp">person</span>      
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Active Users</h3>
-                            <h1>50</h1>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx = '38' cy="38" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p>75%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <small class="text-muted"> Last 24 hours</small>
-                </div>
-                <!--------------END OF Online users------------>
-                <div class="registered">
-                    <span class="material-icons-sharp">account_circle</span>        
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Registered Accounts</h3>
-                            <h1>100 </h1>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx = '38' cy="38" r="36"></circle>
-                            </svg>
-                            <div class="number">
-                                <p>50%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <small class="text-muted"> Last 24 hours</small>
-                </div>
-                <!-- END OF REGISTERED ACCOUNTS-->
-                
+            
+            <div class="users-list">
+            
+            
             </div>
-            <div class="recent-activities">
-                <h2>Recent Activities</h2>
-                <table>
-                    <thead><tr>
-                        <th>Activity Name</th>
-                        <th>No</th>
-                        <th>Time Range</th>
-                    </tr></thead>
-                    <tbody>
-                        <tr>
-                            <td>Account creation</td>
-                            <td>5</td>
-                            <td>11th-17th January</td>
-                        </tr>
-                        <tr>
-                            <td>Logged in users</td>
-                            <td>30</td>
-                            <td>11th-17th January</td>
-                        </tr>
-                        <tr>
-                            <td>Blogs created</td>
-                            <td>2</td>
-                            <td>11th-17th January</td>
-                        </tr>
-                        <tr>
-                            <td>Blogs deleted</td>
-                            <td>0</td>
-                            <td>11th-17th January</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a href="#">See All</a>
-            </div>
+            
             
         </main>
         <!----------------------------END OF MAIN--------------------->
@@ -245,6 +158,7 @@
             </div>
         </div>
     </div>
+    
     <script src="./dashboard.js"></script>
 </body>
 </html>

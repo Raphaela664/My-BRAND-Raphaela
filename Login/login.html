@@ -9,25 +9,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
     <title>Login / Sign Up Form</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+   
     <link rel="stylesheet" href="">
 </head>
 <body>
     <div class="container">
-        <form  class="form" id="login" onsubmit="login()">
+        <form  class="form" id="login" onsubmit="login();">
             <h1 class="form__title">Login</h1>
-            <div class="form__message form__message--error"></div>
+            <div class="form__message form__message--error" id="login_form_message_error"></div>
             <div class="form__input-group">
                 <input type="text" class="form__input "  autofocus placeholder="Username" id="username--email">
                 <div class="form__input-error-message"></div>
                  
             </div>
             <div class="form__input-group">
-                <input type="password" class="form__input"  autofocus placeholder="Password" id="password">
+                <input type="password" class="form__input"  autofocus placeholder="Password" id="login-password">
                 <div class="form__input-error-message"></div>
                  
             </div>
-            <button class="form__button" type="submit">Login</button>
+            <button class="form__button" type="submit" id="Login-button">Login</button>
             <p class="form__text">
                 <a href="#" class="form__link">Forgot Password?</a>
             </p>
@@ -35,25 +35,27 @@
                 <a href="#" class="form__link" id="linkCreateAccount">Don't have an account? Create account</a>
             </p>
         </form>
-        <form  class="form form--hidden" id="createAccount" onsubmit="signup()">
+        <form  class="form form--hidden" id="createAccount" name="sign" onsubmit="signup();" action="#login">
             <h1 class="form__title">Create Account</h1>
-            <div class="form__message form__message--error"></div>
+            <div class="form__message form__message--error" id="signup-form-message"></div>
             <div class="form__input-group">
                 <input type="text" id="signupUsername" class="form__input "  autofocus placeholder="Username">
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
-                <input type="text" class="form__input "  autofocus placeholder="Email address" id="email">
-                <div class="form__input-error-message"></div> 
+                <input type="email" class="form__input "  autofocus placeholder="Email address" id="email" onkeyup="validateEmail()" required>
+                <div class="form__input-error-message" id="email-error" ></div> 
             </div>
             <div class="form__input-group">
-                <input type="password" class="form__input"  autofocus placeholder="Password" id="new-password">
+                <input type="password" class="form__input"  autofocus placeholder="Password" id="new-password" name="password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+                required>
                 <div class="form__input-error-message"></div>
                  
             </div>
             <div class="form__input-group">
-                <input type="password" class="form__input"  autofocus placeholder="Confirm password">
-                <div class="form__input-error-message"></div>
+                <input type="password" class="form__input" onkeyup="verifyPass()" autofocus placeholder="Confirm password" id="confirm-pass" name="password2" required>
+                <div class="form__input-error-message" id="confirm" name="confirm"></div>
                  
             </div>
             <button class="form__button" type="submit">Sign Up</button>
@@ -62,5 +64,6 @@
             </p>
         </form>
     </div>
+    <script src="script.js" ></script>
 </body>
 </html>
