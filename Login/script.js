@@ -26,12 +26,20 @@ function signup(){
         email : document.getElementById("email").value
     }
     let userKeys = Object.keys(signupUser);
+    let id = 0000;
     let users = SignupFormData;
     let info = users.filter(obj => userKeys.every(key => obj.hasOwnProperty(key) &&
     obj[key] === signupUser[key]));
     console.log(info);
     if(info.length ===0){
+        
+       
         SignupFormData.push(signupUser);
+        SignupFormData.forEach(function(){
+            id++
+            let user_id = 'user'+id;
+            signupUser.user_id=user_id;
+        })
         localStorage.setItem('SignupFormData', JSON.stringify(SignupFormData));
         
     }
@@ -106,11 +114,19 @@ function login(e){
     console.log(user);
     if(info.length!==0){
         if(JSON.stringify(admin)!==JSON.stringify(user)){
+            for(let i=0; i<users.length; i++){
+                if(users[i].username === user.username && users[i].password === user.password){
+                    user.user_id = users[i].user_id;
+                    
+                }
+                
+            }
             LoginFormData = JSON.parse(localStorage.getItem('LoginFormData')) || [];
+            
             LoginFormData.push(user);
             localStorage.setItem('LoginFormData', JSON.stringify(LoginFormData));
             console.log('it works');
-            location.assign('../blog.html');
+             location.assign('../blog.html');
          }
          else{
             LoginFormData = JSON.parse(localStorage.getItem('LoginFormData')) || [];
@@ -170,7 +186,7 @@ function validateEmail(){
 }
 
 const findState = ()=>{
-    event.preventDefault();
+   
     const status = document.querySelector('#Login');
     const success = (position) =>{
         console.log(position);

@@ -33,3 +33,46 @@ function sendQuery(){
     
 
 }
+function PostCreatedBlog() {
+    
+    let getData = JSON.parse(localStorage.getItem('blogFormData'));
+
+    for(let i=0; i<getData.length; i++){
+        let Pardiv = document.createElement('div');
+        Pardiv.classList.add('blog-row');
+        let containerDiv = document.querySelector('#blog');
+        containerDiv.appendChild(Pardiv);
+        let childDiv1 = document.createElement('div');
+        childDiv1.classList.add('blog-col');
+        let childDiv2 = document.createElement('div');
+        childDiv2.classList.add('blog-col');
+        const img = new Image();
+        img.src = getData[i].image;
+        childDiv1.appendChild(img);
+        Pardiv.appendChild(childDiv1);
+        Pardiv.appendChild(childDiv2);
+        let html =`<h3>${getData[i].title}</h3><br>
+                   <p>${getData[i].messageContent}</p>
+                   <p><b>Author: </b>Raphaela MAHORO</p>
+                   <a href="./blog.html">Read More...</a>
+                   <div class="reaction">
+                   <i class="fa fa-thumbs-up"></i><p>8</p>
+                   <i class="fa fa-comment"></i><p>0</p>
+                   </div>
+
+        `
+        childDiv2.insertAdjacentHTML('afterbegin',html);
+
+    
+    
+
+}
+}
+
+let popup = document.getElementById('popup')
+function openPopup(){
+    popup.classList.add('open-popup')
+}
+function closePopup(){
+    popup.classList.remove('open-popup')
+}

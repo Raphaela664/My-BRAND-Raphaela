@@ -466,6 +466,9 @@ main .recent-activities a{
     background: var(--color-error);
 }
 
+.blogBtn{
+    background: var(--color-primary);
+}
 
 /*------MEDIA QUERRIES--------*/
 

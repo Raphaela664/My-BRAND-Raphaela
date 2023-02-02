@@ -14,7 +14,7 @@
     
 
 </head>
-<body >
+<body onload="PostCreatedBlog()" >
     <div class="body-container">
         <nav>
             <h2 class="nav-logo">RM.</h2>
@@ -131,7 +131,7 @@
         
     </section>
     
-    <section class="blog" id="blog">
+    <section class="blog" id="blog" >
         <h1 >Latest From The Blog</h1>
         <div class="blog-row">
             <div class="blog-col">
@@ -177,9 +177,7 @@
             </div>
             
         </div>
-        <div class="blog-row">
-            
-        </div>
+        
         
       
     </section>
@@ -222,8 +220,13 @@
                     </div>    
                     
                     
-                   <button type="submit">Send message</button>
+                   <button type="submit" onclick="openPopup()">Send message</button>
                 </form>
+                <div class="popup" id="popup">
+                    <img src="./images/tick1.png" >
+                    <h2>Message succesfully sent!</h2>
+                    <button type="button" onclick="closePopup()">OK</button>
+                </div>
             </div>
            
     </section>
@@ -234,6 +237,7 @@
     </div>
 
     <script src="script.js"></script>
+    
 </body>
 
     
