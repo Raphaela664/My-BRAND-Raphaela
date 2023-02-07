@@ -114,6 +114,13 @@ app.put("/blogs/updateBlog/:id", async(req,res)=>{
     }
 })
 
+
+//AUTHENTICATION STARTS
+const authRoute = require('./routes/auth');
+app.use('/user', authRoute)
+
+//AUTHENTICATION OVER
+
 app.listen(3000,()=>{
     console.log('on port 3000')
 })
