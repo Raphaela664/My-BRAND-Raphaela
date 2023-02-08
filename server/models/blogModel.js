@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const BlogLike = require('./blogLikeModel');
 
 const blogSchema = mongoose.Schema(
     {
@@ -14,8 +15,10 @@ const blogSchema = mongoose.Schema(
         blogContent :{
             type: String,
             required:[true,"Add some Blog Content"]
-        }
+        },
+        blog_likes:[{type:mongoose.Schema.Types.ObjectId,ref: BlogLike}]
     },
+    
     {
         timestamps: true
     }
