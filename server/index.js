@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config()
-
+const Blog = require('./models/blogModel');
+const verify = require('./routes/verifyToken');
 
 
 const app = express()
@@ -27,6 +28,16 @@ app.use('/queries', queriesRoute)
 //blogs
 const blogsRoute = require('./routes/blogs');
 app.use('/blogs', blogsRoute)
+app.get('/home', (req,res)=>{
+    try{
+        res.status(200).json({message: 'WELCOME!'});
+    }catch(error){
+        console.log(error.message);
+        res.status(500).json({message: error.message})
+    }
+})
+
+
 
 //AUTHENTICATION STARTS
 const authRoute = require('./routes/auth');
@@ -34,6 +45,8 @@ app.use('/user', authRoute)
 
 //AUTHENTICATION OVER
 
-app.listen(3000,()=>{
-    console.log('on port 3000')
+app.listen(3001,()=>{
+    console.log('on port 3001')
 })
+
+module.exports=app;

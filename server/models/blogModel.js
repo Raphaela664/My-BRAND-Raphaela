@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const { countDocuments } = require('./blogLikeModel');
 const BlogLike = require('./blogLikeModel');
-
+const BlogComment = require('./blogCommentModel');
 const blogSchema = mongoose.Schema(
     {
         title:{
@@ -16,7 +17,9 @@ const blogSchema = mongoose.Schema(
             type: String,
             required:[true,"Add some Blog Content"]
         },
-        blog_likes:[{type:mongoose.Schema.Types.ObjectId,ref: BlogLike}]
+        blog_likes:[{type:mongoose.Schema.Types.ObjectId, ref: BlogLike}],
+        blog_comments:[{type:mongoose.Schema.Types.Mixed }]
+
     },
     
     {
