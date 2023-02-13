@@ -19,6 +19,7 @@ const blogSchema = mongoose.Schema(
         },
         blog_likes:[{type:mongoose.Schema.Types.ObjectId, ref: BlogLike}],
         blog_comments:[{type:mongoose.Schema.Types.Mixed }]
+        
 
     },
     

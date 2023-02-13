@@ -25,10 +25,14 @@ app.get('/All',/*verify*/async(req,res)=>{
     }
 })
 
-app.get("/viewblog/:id",/*verify*/async(req,res)=>{
+app.get("/viewblog/:id",verify,async(req,res)=>{
     try{
         const {id} = req.params;
         const blog = await Blog.findById(id)
+        if(!blog){
+            return res.status(404).json({message: `Blog with ID: ${id} was not found`})
+        }
+        
         res.status(200).json(blog);
     }catch(error){
         res.status(500).json({message:error.message})
@@ -52,7 +56,7 @@ app.put("/updateBlog/:id",verify,isAdmin, async(req,res)=>{
         const {id} = req.params;
         const blog = await Blog.findByIdAndUpdate(id, req.body);
         if(!blog){
-            return res.status(404).json({message: `Blog with ID: ${id} was not found`})
+            return res.status(400).json({message: `Blog with ID: ${id} was not found`})
         }
         const updateBlog = await Blog.findById(id)
         res.status(200).json(updateBlog);
