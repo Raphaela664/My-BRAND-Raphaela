@@ -17,36 +17,85 @@ app.use(express.json());
             title: 'Node JS API Project',
             version:'1.0.0'
         },
+        components:{
+            securitySchemas:{
+                bearerAuth: {
+                    type: "http",
+                    scheme: "bearer",
+                    bearerFormat: "JWT"
+                }
+            }
+        }
+        ,
+        security:[
+            {
+                bearerAuth:[]
+            }
+        ]
+        ,
         servers :[{
             url:"http://127.0.0.1:3001/"
         }]
     },
-    apis: ['./index.js','./routes/blogs.js',"./routes/queries.js",'./routes/auth.js']
+    apis: ['./index.js','./routes/blogs.js',"./routes/queries.js",'./routes/auth.js','./models/userModel.js',
+    './models/queryModel.js','./models/blogModel.js','./models/blogCommentModel.js','./models/blogLikeModel.jscy']
 }
+/**
+ * @swagger
+ *  components:
+ *      schema:
+ *          newUser:
+ *              type: object
+ *              properties:
+ *                  username:
+ *                      type: string
+ *                  email:
+ *                      type: string
+ *                  password: 
+ *                      type: string
+ * 
+ */
+
 
 /**
  * @swagger
  * /home :
  *  get:
+ *      tags:
+ *          - Home
  *      summary: This api is used to check if get method is working
  *      description: This api is working properly if it renders the words "WELCOME!"
  *      responses:
  *          200:
  *                  description: Test method is a success
  * 
- * 
- * /user/login : 
- *   post:
- *      summary: This api is used to check if login POST method is working
- *      description: This api is working properly if and only if a registered user can login"
+ * /user/register :
+ *  post:
+ *      tags:
+ *          - Users
+ *      summary: REGISTER A USER
+ *      description: This api is working properly 
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      items:
+ *                          $ref: '#/components/schema/newUser'
  *      responses:
  *          200:
- *                  description: Test method is a success
+ *              
+ * 
+ * 
+ *
  */
 
 const swaggerSpec = swaggerJSDoc(options)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
- 
+
+
+
 
 
 

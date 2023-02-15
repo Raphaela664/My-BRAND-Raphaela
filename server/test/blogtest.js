@@ -21,8 +21,7 @@ chai.use(chaiHttp);
 
 describe('/First test collection', ()=>{
 
-        /**
-         * it('Test default API welcome route...',(done)=>{
+         it('Test default API welcome route...',(done)=>{
 
             chai.request(server)
             .get('/home')
@@ -36,9 +35,7 @@ describe('/First test collection', ()=>{
 
             
         });
-         */
-            
-          /*it('should verify presence of blogs in the database', (done)=>{
+         it('should verify presence of blogs in the database', (done)=>{
             chai.request(server)
             .get('/blogs/All')
             .end((err,res)=>{
@@ -58,11 +55,10 @@ describe('/First test collection', ()=>{
                 res.body.should.have.property("message").eql("No Blog found");
                 done();
             })
-        })*/
+        })
          
         
-        /**
-         * it('should post a valid query',(done)=>{
+        it('should post a valid query',(done)=>{
             let query = {
                 name: 'Raphaela',
                 email: 'mahoraphy02@gmail.com',
@@ -78,10 +74,7 @@ describe('/First test collection', ()=>{
 
             });
         })
-         */
-        
-        /**
-         * it('should test user registration',(done)=>{
+          it('should test user registration',(done)=>{
             let user = {
                 username: 'Raphaelabnyugftyssefdfd',
                 email: 'mahoraphy0123hjkjtfsdfytf4@gmail.com',
@@ -97,10 +90,7 @@ describe('/First test collection', ()=>{
 
             });
         })
-         */
-        
-        /**
-         * it('should test for valid login', (done)=>{
+          it('should test for valid login', (done)=>{
              
             let user ={
                 username: 'Administrator',
@@ -115,10 +105,7 @@ describe('/First test collection', ()=>{
                 done();
             })
         })
-         */
-        
-        /**
-         * it('should test valid blog creation', (done)=>{
+         it('should test valid blog creation', (done)=>{
             let user ={
                 username: 'Administrator',
                 password: 'Test123@'
@@ -152,9 +139,7 @@ describe('/First test collection', ()=>{
 
             
         })
-         */
-        /**
-         * it('blog update', (done)=>{
+          it('blog update', (done)=>{
             let user ={
                 username: 'Administrator',
                 password: 'Test123@'
@@ -188,9 +173,7 @@ describe('/First test collection', ()=>{
 
             
         })
-         */
-        /**
-         * it('Test successful deletion of blog', (done)=>{
+         it('Test successful deletion of blog', (done)=>{
             let user ={
                 username: 'Administrator',
                 password: 'Test123@'
@@ -218,9 +201,9 @@ describe('/First test collection', ()=>{
 
             
         })
-         */
-        /**
-         * it('View single blog', (done)=>{
+         
+        
+         it('View single blog', (done)=>{
             let user ={
                 username: 'Administrator',
                 password: 'Test123@'
@@ -247,7 +230,7 @@ describe('/First test collection', ()=>{
 
             
         })
-         */
+         
         it('add comment', (done)=>{
             let user ={
                 username: 'user0004',
@@ -266,8 +249,9 @@ describe('/First test collection', ()=>{
                     comment: "Please let it be now"
                 }
                 chai.request(server)
-                .post('/blogs/comments/create/:id/'+blog_id+/"comment"/)
+                .post('/blogs/comments/create/'+blog_id)
                 .set({ 'bearer-token': tok})
+                .send(comment)
                 .end((err,res)=>{
                     res.should.have.status(200);
                     done();
@@ -278,8 +262,7 @@ describe('/First test collection', ()=>{
 
             
         })
-        /**
-         * it('View a single query', (done)=>{
+        it('View a single query', (done)=>{
             let user ={
                 username: 'Administrator',
                 password: 'Test123@'
@@ -306,10 +289,9 @@ describe('/First test collection', ()=>{
 
             
         })
-         */
          
-        /**
-         * it('View list of queries', (done)=>{
+         
+         it('View list of queries', (done)=>{
             let user ={
                 username: 'Administrator',
                 password: 'Test123@'
@@ -336,9 +318,8 @@ describe('/First test collection', ()=>{
 
             
         })
-         */
-        /**
-         * it('delete a query', (done)=>{
+        
+         it('delete a query', (done)=>{
             let user ={
                 username: 'Administrator',
                 password: 'Test123@'
@@ -365,17 +346,15 @@ describe('/First test collection', ()=>{
 
             
         })
-         */
+         
 
         
-/**
- * it('should test something', ()=>{
+ it('should test something', ()=>{
             //actual test content
             let expectedVal = 10;
             let actualVal = 10;
             expect(actualVal).to.be.equal(expectedVal);
     })
-*/
-    
+ 
 })
 
