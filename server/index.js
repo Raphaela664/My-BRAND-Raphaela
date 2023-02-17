@@ -484,8 +484,8 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
 
 
 
-mongoose.set("strictQuery", false)
-mongoose.connect("mongodb://127.0.0.1:27017/brandDB",{
+mongoose.set("strictQuery", true)
+mongoose.connect("mongodb+srv://mahoraphy02:fiacre02@cluster0.xisovsw.mongodb.net/BrandDB?retryWrites=true&w=majority",{
     useNewUrlParser:true, useUnifiedTopology:true
 },(err)=>{
     if(err){
