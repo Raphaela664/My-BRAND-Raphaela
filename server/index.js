@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 require("dotenv").config()
 const Blog = require('./models/blogModel');
 const verify = require('./routes/verifyToken');
-
+const cors = require('cors')
 const swaggerJSDoc = require('swagger-jsdoc')
 const swaggerUI = require('swagger-ui-express');
 const app = express()
@@ -476,6 +476,7 @@ app.use(express.json());
  * 
  */
 
+app.use(cors());
 const swaggerSpec = swaggerJSDoc(options)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
 

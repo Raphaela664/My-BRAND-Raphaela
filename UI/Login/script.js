@@ -5,7 +5,28 @@
     messageElement.classList.remove("form__message--success", "form__message--error");
     messageElement.classList.add(`form__message--${type}`)
 }*/
-
+const signBtn= document.getElementById('signSubmit');
+signBtn.addEventListener('click',signUser)
+const baseUrl = "https://my-brand-raphaela-production.up.railway.app/user/register"
+async function signUser(e){
+    e.preventDefault()
+    
+        const res = await fetch(baseUrl,{
+            method: "POST",
+            headers:{
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username : document.getElementById('signupUsername').value,
+                password : document.getElementById('new-password').value,
+                email : document.getElementById("email").value
+            })
+        })
+        console.log(res);
+    
+    
+}
 function setInputError(inputElement, message){
     inputElement.classList.add("form__input--error");
     inputElement.parentElement.querySelector(".form__input-error-message").textContent=message;
@@ -16,9 +37,9 @@ function clearInputError(inputElement){
     inputElement.parentElement.querySelector(".form__input-error-message").textContent="";
 }
 
-function signup(){
+function signup(e){
     
-    //console.log('working')
+    e.preventDefault();
     let SignupFormData = JSON.parse(localStorage.getItem('SignupFormData')) || [];
     signupUser={
         username : document.getElementById('signupUsername').value,
