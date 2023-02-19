@@ -1,4 +1,4 @@
- let image;
+let image;
 document.querySelector('#imageF').addEventListener('change', function(){
     const reader = new FileReader();
     reader.readAsDataURL(this.files[0]);

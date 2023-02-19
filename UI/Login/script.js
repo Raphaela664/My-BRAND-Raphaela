@@ -33,7 +33,7 @@ async function signUser(e){
     
 };
 async function logUser(e){
-    
+    e.preventDefault();
     
     const res = await fetch(baseUrl+"login",{
         method: "POST",
@@ -50,13 +50,19 @@ async function logUser(e){
      
     const logUser = await res.json();
     const token = logUser.token;
-    decodedToken = atob(token.split(".")[1]);
-    if(decodedToken !== '63ef7ecb81ce07bf6698c2de'){
-        window.location.href('../dashboard.html')
+    decodedToken = JSON.parse(atob(token.split(".")[1]));
+    console.log(decodedToken)
+    if(decodedToken._id !== '63ef7ecb81ce07bf6698c2de'){
+        
+        window.location.href='../index.html'
     }
-    else(
-        window.location.href('../index.html')
-    )
+    else{
+        
+        window.location.href='../dashboard.html';
+    }
+        
+        
+    
     
 
 }
@@ -142,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 
 function login(e){
-    event.preventDefault();
+    e.preventDefault();
     //console.log('working')
     var getData= localStorage.getItem('SignupFormData');
     let users = JSON.parse(getData);
@@ -180,14 +186,14 @@ function login(e){
             LoginFormData.push(user);
             localStorage.setItem('LoginFormData', JSON.stringify(LoginFormData));
             console.log('it works');
-             location.assign('../blog.html');
+            location.assign('../blog.html');
          }
          else{
             LoginFormData = JSON.parse(localStorage.getItem('LoginFormData')) || [];
             LoginFormData.push(user);
             localStorage.setItem('LoginFormData', JSON.stringify(LoginFormData));
             console.log('Admin here');
-            location.assign('../dashboard.html');
+            //location.assign('../dashboard.html');
          }
     }
     else{
