@@ -33,7 +33,7 @@ async function signUser(e){
     
 };
 async function logUser(e){
-    e.preventDefault()
+    
     
     const res = await fetch(baseUrl+"login",{
         method: "POST",
