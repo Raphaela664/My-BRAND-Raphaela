@@ -7,11 +7,13 @@
 }*/
 const signBtn= document.getElementById('signSubmit');
 signBtn.addEventListener('click',signUser)
-const baseUrl = "https://my-brand-raphaela-production.up.railway.app/user/register"
+const logBtn = document.getElementById('Login-button');
+logBtn.addEventListener('click',logUser);
+const baseUrl = "https://my-brand-raphaela-production.up.railway.app/user/"
 async function signUser(e){
     e.preventDefault()
     
-        const res = await fetch(baseUrl,{
+        const res = await fetch(baseUrl+"register",{
             method: "POST",
             headers:{
                 Accept: "application/json",
@@ -23,8 +25,31 @@ async function signUser(e){
                 email : document.getElementById("email").value
             })
         })
-        console.log(res);
+         
+        const regUser = await res.json();
+        console.log(regUser);
     
+    
+};
+async function logUser(e){
+    e.preventDefault()
+    
+    const res = await fetch(baseUrl+"login",{
+        method: "POST",
+        headers:{
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username :  document.getElementById('username--email').value,
+            password : document.getElementById('login-password').value
+           
+        })
+    })
+     
+    const logUser = await res.json();
+    const token = logUser.token;
+    console.log(token);
     
 }
 function setInputError(inputElement, message){

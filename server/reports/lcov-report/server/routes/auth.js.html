@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">63.46% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>26/52</span>
+                <span class='fraction'>33/52</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">35.71% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/14</span>
+                <span class='fraction'>7/14</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">52% </span>
+                <span class="strong">66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>26/50</span>
+                <span class='fraction'>33/50</span>
             </div>
         
             
@@ -162,44 +162,44 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -240,30 +240,30 @@ const isAdmin = require('./isAdmin');
 const verify = require('./verifyToken');
 &nbsp;
 router.post('/register', async(req, res)=&gt;{
-   
+&nbsp;
     const {error} = registerValidation(req.body);
     <span class="missing-if-branch" title="if path not taken" >I</span>if(error) <span class="cstat-no" title="statement not covered" >return res.status(400).send(error.details[0].message)</span>
     const emailExist = await User.findOne({email: req.body.email})
     const usernameExist = await User.findOne({username: req.body.username})
-    <span class="missing-if-branch" title="else path not taken" >E</span>if(emailExist){
-        return res.status(500).send('Email already exists')
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(emailExist){
+<span class="cstat-no" title="statement not covered" >        return res.status(500).send('Email already exists')</span>
     }
-<span class="cstat-no" title="statement not covered" >    if(usernameExist){</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(usernameExist){
 <span class="cstat-no" title="statement not covered" >        return res.status(500).send('Username already taken')</span>
     }
     //hash password
-    const salt = <span class="cstat-no" title="statement not covered" >await bcrypt.genSalt(10);</span>
-    const hashedPassword = <span class="cstat-no" title="statement not covered" >await bcrypt.hash(req.body.password, salt)</span>
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt)
 &nbsp;
     // create new user
-    const user = <span class="cstat-no" title="statement not covered" >new User({</span>
+    const user = new User({
         username: req.body.username,
         email:req.body.email,
         password: hashedPassword
     });
-<span class="cstat-no" title="statement not covered" >    try{</span>
-        const savedUser = <span class="cstat-no" title="statement not covered" >await user.save();</span>
-<span class="cstat-no" title="statement not covered" >        res.send({user: user._id, username: user.username, email: user.email});</span>
+    try{
+        const savedUser = await user.save();
+        res.send({user: user._id, username: user.username, email: user.email});
     }catch(error){
 <span class="cstat-no" title="statement not covered" >        res.status(500).send(error)</span>
 }
@@ -274,8 +274,8 @@ router.post('/login', async(req,res)=&gt;{
         const {error} = loginValidation(req.body);
         <span class="missing-if-branch" title="if path not taken" >I</span>if(error) <span class="cstat-no" title="statement not covered" >return res.status(500).send(error.details[0].message)</span>
         const user = await User.findOne({username: req.body.username})
-        <span class="missing-if-branch" title="if path not taken" >I</span>if(!user){
-<span class="cstat-no" title="statement not covered" >                return  res.status(500).send('Wrong Email/Password combination')</span>
+        if(!user){
+                return  res.status(500).send('Wrong Email/Password combination')
         }
         const validPass = await bcrypt.compare(req.body.password, user.password)
         <span class="missing-if-branch" title="if path not taken" >I</span>if(!validPass){
@@ -322,7 +322,7 @@ module.exports = router;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-02-16T10:26:17.543Z
+                at 2023-02-17T13:36:22.815Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
