@@ -5,7 +5,7 @@
     messageElement.classList.remove("form__message--success", "form__message--error");
     messageElement.classList.add(`form__message--${type}`)
 }*/
-import  jwt_decode from "jwt-decode";
+
 const signBtn= document.getElementById('signSubmit');
 signBtn.addEventListener('click',signUser)
 const logBtn = document.getElementById('Login-button');
@@ -50,7 +50,7 @@ async function logUser(e){
      
     const logUser = await res.json();
     const token = logUser.token;
-    decodedToken = jwt_decode(token);
+    decodedToken = atob(token.split(".")[1]);
     if(decodedToken !== '63ef7ecb81ce07bf6698c2de'){
         window.location.href('../dashboard.html')
     }
