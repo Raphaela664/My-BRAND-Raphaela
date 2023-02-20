@@ -82,7 +82,7 @@ function PostCreatedBlog() {
             Pardiv.appendChild(childDiv1);
             Pardiv.appendChild(childDiv2);
             let html =`<h3>${data[i].title}</h3><br>
-                       <p>${data[i].messageContent}</p>
+                       <p>${data[i].blogContent}</p>
                        <p><b>Author: </b>Raphaela MAHORO</p>
                        <a href="./blog.html">Read More...</a>
                        <div class="reaction">
