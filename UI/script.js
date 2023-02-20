@@ -18,8 +18,28 @@ for(var i=0; i<btns.length; i++){
     })
 }
 
-function sendQuery(){
-    event.preventDefault();
+const queryBtn = document.getElementById('sendQueryBtn');
+queryBtn.addEventListener("click", sendQuery);
+const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
+
+
+async function sendQuery(e){
+    e.preventDefault();
+    
+    const res = await fetch(baseUrl+"queries/SendQuery",{
+        method: "POST",
+        headers:{
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name : document.getElementById("name").value,
+            email : document.getElementById("email").value,
+            message: document.getElementById("message").value
+        })
+    })
+    const query = await res.json();
+    console.log(query);
     let contactFormData = JSON.parse(localStorage.getItem('contactFormData')) || [];
     let contactData = {
         Name : document.getElementById("name").value,
