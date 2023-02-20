@@ -1,3 +1,4 @@
+
 let image;
 document.querySelector('#imageF').addEventListener('change', function(){
     const reader = new FileReader();
@@ -7,10 +8,11 @@ document.querySelector('#imageF').addEventListener('change', function(){
     })
 
 })
-function blogSubmit(e){
+async function blogSubmit(e){
     event.preventDefault();
     //console.log('working')
-    
+    const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
+    const adminToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2VmN2VjYjgxY2UwN2JmNjY5OGMyZGUiLCJpYXQiOjE2NzY4Njg1ODh9.VoXkQ7F9XhXOgKq54y5fUqyQ14N8W3mvdEVA8jL1X4k"
     
     let blogFormData = JSON.parse(localStorage.getItem('blogFormData')) || [];
     let blogData = {
@@ -22,6 +24,21 @@ function blogSubmit(e){
     blogFormData.push(blogData);
         
     localStorage.setItem('blogFormData', JSON.stringify(blogFormData));
+    
+    await fetch(baseUrl+'blogs/newblog',{
+        method: "POST",
+        headers:{
+            'bearer-token':adminToken,
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            title : document.getElementById('title').value,
+            //date : document.getElementById('date').value,
+            image: image,
+            blogContent: document.getElementById('message').value
+        })
+    })
 
 }
 

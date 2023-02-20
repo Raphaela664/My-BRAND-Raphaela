@@ -1,7 +1,7 @@
 const sideMenu = document.querySelector("aside");
 const menuBtn = document.querySelector("#menu-btn");
 const closeBtn= document.querySelector("#close-btn");
-
+const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
 menuBtn.addEventListener('click', () =>{
     sideMenu.style.display='block';
 })
@@ -22,69 +22,94 @@ for(var i=0; i<btns.length; i++){
     })
 }
 function UserRegistration(){
-    
-    let showData = JSON.parse(localStorage.getItem('SignupFormData'));
-    let showDataLastObject = showData.length -1;
-    for(let i =0; i<showData.length; i++){
-        let div = document.createElement('div');
-        div.classList.add('user');
-        let containerDiv = document.querySelector('.users-list');
-        containerDiv.appendChild(div);
-        let html =`<h2>User</h2> 
-        <p>${showData[i].username} <br>
-        <p>${showData[i].email}<br>
-        <p>${showData[i].password}</P>
-        <button class="hero-btn delete-btn data">Delete</button>`
-        div.insertAdjacentHTML('afterbegin',html);
-    }
-    
+    fetch (baseUrl+'user/login/admin/listOfUsers',{
+        headers:{
+            'bearer-token':adminToken
+        }
+    })
+    .then(res=>{
+        return res.json();
+    })
+    .then(data =>{
+        for(let i =0; i<data.length; i++){
+            let div = document.createElement('div');
+            div.classList.add('user');
+            let containerDiv = document.querySelector('.users-list');
+            containerDiv.appendChild(div);
+            let html =`<h2>User</h2> 
+            <p>${data[i].username} <br>
+            <p>${data[i].email}<br>
+            <p>${data[i].password}</P>
+            <button class="hero-btn delete-btn data">Delete</button>`
+            div.insertAdjacentHTML('afterbegin',html);
+        }
+    })
+       
 }
+const adminToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2VmN2VjYjgxY2UwN2JmNjY5OGMyZGUiLCJpYXQiOjE2NzY4Njg1ODh9.VoXkQ7F9XhXOgKq54y5fUqyQ14N8W3mvdEVA8jL1X4k"
 
-function retrieveQueries(){
+async function retrieveQueries(){
     
-    let showData = JSON.parse(localStorage.getItem('contactFormData'));
-    for(let i =0; i<showData.length; i++){
-        let div = document.createElement('div');
-        div.classList.add('query');
-        let containerDiv = document.querySelector('.queries-list');
-        containerDiv.appendChild(div);
-        let html =`<h2>Query</h2> 
-        <p><b>Username:</b> ${showData[i].Name} <br>
-        <p><b>Email: </b>${showData[i].Email}<br>
-        <p><b>Message: </b>${showData[i].Message}</P>
-        <button class="hero-btn delete-btn data">Delete</button>
-        `
-        div.insertAdjacentHTML('afterbegin',html)
-        ;
-    }
+    fetch (baseUrl+'queries/queriesList',{
+        headers:{
+            'bearer-token':adminToken
+        }
+    })
+    .then(res=>{
+        return res.json();
+    })
+    .then(data =>{
+        for(let i =0; i<data.length; i++){
+            let div = document.createElement('div');
+            div.classList.add('query');
+            let containerDiv = document.querySelector('.queries-list');
+            containerDiv.appendChild(div);
+            let html =`<h2>Query</h2> 
+            <p><b>Username:</b> ${data[i].name} <br>
+            <p><b>Email: </b>${data[i].email}<br>
+            <p><b>Message: </b>${data[i].message}</P>
+            <button class="hero-btn delete-btn data">Delete</button>
+            `
+            div.insertAdjacentHTML('afterbegin',html)
+            ;
+        }
+    })
+    
     
 }
 function retrieveBlogs(){
+
+    fetch (baseUrl+'blogs/All',{
+        headers:{
+            'bearer-token':adminToken
+        }
+    })
+    .then(res=>{
+        return res.json();
+    })
+    .then(data =>{
+        console.log(data);
+        for(let i =0; i<data.length; i++){
+            let div = document.createElement('div');
+            div.classList.add('query');
+            let containerDiv = document.querySelector('.tableData');
+            containerDiv.appendChild(div);
+            let html = `<tr>
+                        <td class="data">${data[i].title}</td>
+                        <td class="data">${data[i].createdAt}</td>
+                        <td><button class="hero-btn delete-btn data">Delete</button></td>
+                        </tr>`;
+            div.insertAdjacentHTML('afterbegin',html);
+           
+    
+            
+        }
+    })
+
     let showData = JSON.parse(localStorage.getItem('blogFormData'));
     
 
-    for(let i =0; i<showData.length; i++){
-        let div = document.createElement('div');
-        div.classList.add('query');
-        let containerDiv = document.querySelector('.tableData');
-        containerDiv.appendChild(div);
-        const date = new Date();
-
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
-        let currentDate = `${day}/${month}/${year}`;
-        let html = `<tr>
-                    <td class="data">${showData[i].title}</td>
-
-                    <td class="data">${currentDate}</td>
-                    <td><button class="hero-btn delete-btn data">Delete</button></td>
-                    </tr>`;
-        div.insertAdjacentHTML('afterbegin',html);
-       
-
-        
-    }
+   
 }
 const tableEl = document.querySelector('tbody');
 tableEl.addEventListener('click',deleteRow);

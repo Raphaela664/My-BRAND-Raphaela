@@ -39,7 +39,7 @@ async function sendQuery(e){
         })
     })
     const query = await res.json();
-    console.log(query);
+    
     let contactFormData = JSON.parse(localStorage.getItem('contactFormData')) || [];
     let contactData = {
         Name : document.getElementById("name").value,
