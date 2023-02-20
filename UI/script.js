@@ -56,37 +56,49 @@ async function sendQuery(e){
 function PostCreatedBlog() {
     
     let getData = JSON.parse(localStorage.getItem('blogFormData'));
-
-    for(let i=0; i<getData.length; i++){
-        let Pardiv = document.createElement('div');
-        Pardiv.classList.add('blog-row');
-        let containerDiv = document.querySelector('#blog');
-        containerDiv.appendChild(Pardiv);
-        let childDiv1 = document.createElement('div');
-        childDiv1.classList.add('blog-col');
-        let childDiv2 = document.createElement('div');
-        childDiv2.classList.add('blog-col');
-        const img = new Image();
-        img.src = getData[i].image;
-        childDiv1.appendChild(img);
-        Pardiv.appendChild(childDiv1);
-        Pardiv.appendChild(childDiv2);
-        let html =`<h3>${getData[i].title}</h3><br>
-                   <p>${getData[i].messageContent}</p>
-                   <p><b>Author: </b>Raphaela MAHORO</p>
-                   <a href="./blog.html">Read More...</a>
-                   <div class="reaction">
-                   <i class="fa fa-thumbs-up"></i><p>8</p>
-                   <i class="fa fa-comment"></i><p>0</p>
-                   </div>
-
-        `
-        childDiv2.insertAdjacentHTML('afterbegin',html);
-
+    const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
+    const adminToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2VmN2VjYjgxY2UwN2JmNjY5OGMyZGUiLCJpYXQiOjE2NzY4Njg1ODh9.VoXkQ7F9XhXOgKq54y5fUqyQ14N8W3mvdEVA8jL1X4k"
+    fetch (baseUrl+'blogs/All',{
+        headers:{
+            'bearer-token':adminToken
+        }
+    })
+    .then(res=>{
+        return res.json();
+    })
+    .then(data =>{
+        for(let i=0; i<data.length; i++){
+            let Pardiv = document.createElement('div');
+            Pardiv.classList.add('blog-row');
+            let containerDiv = document.querySelector('#blog');
+            containerDiv.appendChild(Pardiv);
+            let childDiv1 = document.createElement('div');
+            childDiv1.classList.add('blog-col');
+            let childDiv2 = document.createElement('div');
+            childDiv2.classList.add('blog-col');
+            const img = new Image();
+            img.src = data[i].image;
+            childDiv1.appendChild(img);
+            Pardiv.appendChild(childDiv1);
+            Pardiv.appendChild(childDiv2);
+            let html =`<h3>${data[i].title}</h3><br>
+                       <p>${data[i].messageContent}</p>
+                       <p><b>Author: </b>Raphaela MAHORO</p>
+                       <a href="./blog.html">Read More...</a>
+                       <div class="reaction">
+                       <i class="fa fa-thumbs-up"></i><p>8</p>
+                       <i class="fa fa-comment"></i><p>0</p>
+                       </div>
     
+            `
+            childDiv2.insertAdjacentHTML('afterbegin',html);
     
-
-}
+        
+        
+    
+    }
+    })
+    
 }
 
 let popup = document.getElementById('popup')
