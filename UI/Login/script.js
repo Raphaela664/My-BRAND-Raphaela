@@ -54,7 +54,7 @@ async function logUser(e){
     console.log(decodedToken)
     if(decodedToken._id !== '63ef7ecb81ce07bf6698c2de'){
         
-        window.location.href='../index.html'
+        window.location.href='../blog.html'
     }
     else{
         

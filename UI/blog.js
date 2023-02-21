@@ -17,7 +17,7 @@ async function blogSubmit(e){
     let blogFormData = JSON.parse(localStorage.getItem('blogFormData')) || [];
     let blogData = {
         title : document.getElementById('title').value,
-        date : document.getElementById('date').value,
+        //date : document.getElementById('date').value,
         image: image,
         messageContent: document.getElementById('message').value
     }
