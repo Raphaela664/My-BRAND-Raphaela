@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.67% </span>
+                <span class="strong">43.02% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>41/86</span>
+                <span class='fraction'>37/86</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">21.42% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/14</span>
+                <span class='fraction'>3/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.84% </span>
+                <span class="strong">38.46% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>7/13</span>
+                <span class='fraction'>5/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.67% </span>
+                <span class="strong">43.02% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>41/86</span>
+                <span class='fraction'>37/86</span>
             </div>
         
             
@@ -271,25 +271,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -300,6 +288,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -361,10 +361,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -446,11 +446,11 @@ app.get("/viewblog/:id",verify,async(req,res)=&gt;{
     try{
         const {id} = req.params;
         const blog = await Blog.findById(id)
-        <span class="missing-if-branch" title="if path not taken" >I</span>if(!blog){
-<span class="cstat-no" title="statement not covered" >            return res.status(404).json({message: `Blog with ID: ${id} was not found`})</span>
+        <span class="missing-if-branch" title="else path not taken" >E</span>if(!blog){
+            return res.status(404).json({message: `Blog with ID: ${id} was not found`})
         }
         
-        res.status(200).json(blog);
+<span class="cstat-no" title="statement not covered" >        res.status(200).json(blog);</span>
     }catch(error){
 <span class="cstat-no" title="statement not covered" >        res.status(500).json({message:error.message})</span>
     }
@@ -536,11 +536,11 @@ app.post("/viewblog/like/:blog_id",verify,<span class="fstat-no" title="function
 })
 &nbsp;
 &nbsp;
-app.post('/comments/create/:id',verify,(req,res)=&gt;{
-    const {id} = req.params;
-    Blog.findOne({_id:id}).then(async(blog)=&gt;{
-        <span class="missing-if-branch" title="else path not taken" >E</span>if(!blog){
-            return res.status(500).json({message:'No blog found'})
+app.post('/comments/create/:id',verify,<span class="fstat-no" title="function not covered" >(r</span>eq,res)=&gt;{
+    const {id} = <span class="cstat-no" title="statement not covered" >req.params;</span>
+<span class="cstat-no" title="statement not covered" >    Blog.findOne({_id:id}).then(<span class="fstat-no" title="function not covered" >as</span>ync(blog)=&gt;{</span>
+<span class="cstat-no" title="statement not covered" >        if(!blog){</span>
+<span class="cstat-no" title="statement not covered" >            return res.status(500).json({message:'No blog found'})</span>
         }else{
 <span class="cstat-no" title="statement not covered" >            try{</span>
                 let  newCommentDoc = <span class="cstat-no" title="statement not covered" >new BlogComment({</span>
@@ -598,7 +598,7 @@ module.exports = app;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-02-16T10:26:17.543Z
+                at 2023-02-17T13:36:22.815Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

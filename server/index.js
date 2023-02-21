@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 require("dotenv").config()
 const Blog = require('./models/blogModel');
 const verify = require('./routes/verifyToken');
-
+const cors = require('cors')
 const swaggerJSDoc = require('swagger-jsdoc')
 const swaggerUI = require('swagger-ui-express');
 const app = express()
@@ -476,6 +476,7 @@ app.use(express.json());
  * 
  */
 
+app.use(cors());
 const swaggerSpec = swaggerJSDoc(options)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
 
@@ -484,8 +485,8 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
 
 
 
-mongoose.set("strictQuery", false)
-mongoose.connect("mongodb://127.0.0.1:27017/brandDB",{
+mongoose.set("strictQuery", true)
+mongoose.connect("mongodb+srv://mahoraphy02:fiacre02@cluster0.xisovsw.mongodb.net/BrandDB?retryWrites=true&w=majority",{
     useNewUrlParser:true, useUnifiedTopology:true
 },(err)=>{
     if(err){

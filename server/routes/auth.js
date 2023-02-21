@@ -7,7 +7,7 @@ const isAdmin = require('./isAdmin');
 const verify = require('./verifyToken');
 
 router.post('/register', async(req, res)=>{
-   
+
     const {error} = registerValidation(req.body);
     if(error) return res.status(400).send(error.details[0].message)
     const emailExist = await User.findOne({email: req.body.email})
@@ -50,7 +50,11 @@ router.post('/login', async(req,res)=>{
         }
         //create and assigning token
         const token = jwt.sign({ _id: user._id}, process.env.secret_token )
-        res.header('bearer-token', token).json(token)
+        res.header('bearer-token', token).json({
+            token: token
+        });
+
+        
 
         
 });

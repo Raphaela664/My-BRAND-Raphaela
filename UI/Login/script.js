@@ -6,6 +6,66 @@
     messageElement.classList.add(`form__message--${type}`)
 }*/
 
+const signBtn= document.getElementById('signSubmit');
+signBtn.addEventListener('click',signUser)
+const logBtn = document.getElementById('Login-button');
+logBtn.addEventListener('click',logUser);
+const baseUrl = "https://my-brand-raphaela-production.up.railway.app/user/"
+async function signUser(e){
+    e.preventDefault()
+    
+        const res = await fetch(baseUrl+"register",{
+            method: "POST",
+            headers:{
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username : document.getElementById('signupUsername').value,
+                password : document.getElementById('new-password').value,
+                email : document.getElementById("email").value
+            })
+        })
+         
+        const regUser = await res.json();
+        console.log(regUser);
+    
+    
+};
+async function logUser(e){
+    e.preventDefault();
+    
+    const res = await fetch(baseUrl+"login",{
+        method: "POST",
+        headers:{
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username :  document.getElementById('username--email').value,
+            password : document.getElementById('login-password').value
+           
+        })
+    })
+     
+    const logUser = await res.json();
+    const token = logUser.token;
+    decodedToken = JSON.parse(atob(token.split(".")[1]));
+    console.log(decodedToken)
+    if(decodedToken._id !== '63ef7ecb81ce07bf6698c2de'){
+        
+        window.location.href='../blog.html'
+    }
+    else{
+        
+        window.location.href='../dashboard.html';
+    }
+        
+        
+    
+    
+
+}
 function setInputError(inputElement, message){
     inputElement.classList.add("form__input--error");
     inputElement.parentElement.querySelector(".form__input-error-message").textContent=message;
@@ -16,9 +76,9 @@ function clearInputError(inputElement){
     inputElement.parentElement.querySelector(".form__input-error-message").textContent="";
 }
 
-function signup(){
+function signup(e){
     
-    //console.log('working')
+    e.preventDefault();
     let SignupFormData = JSON.parse(localStorage.getItem('SignupFormData')) || [];
     signupUser={
         username : document.getElementById('signupUsername').value,
@@ -88,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 
 function login(e){
-    event.preventDefault();
+    e.preventDefault();
     //console.log('working')
     var getData= localStorage.getItem('SignupFormData');
     let users = JSON.parse(getData);
@@ -126,14 +186,14 @@ function login(e){
             LoginFormData.push(user);
             localStorage.setItem('LoginFormData', JSON.stringify(LoginFormData));
             console.log('it works');
-             location.assign('../blog.html');
+            location.assign('../blog.html');
          }
          else{
             LoginFormData = JSON.parse(localStorage.getItem('LoginFormData')) || [];
             LoginFormData.push(user);
             localStorage.setItem('LoginFormData', JSON.stringify(LoginFormData));
             console.log('Admin here');
-            location.assign('../dashboard.html');
+            //location.assign('../dashboard.html');
          }
     }
     else{
