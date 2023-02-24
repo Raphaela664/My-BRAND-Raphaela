@@ -648,6 +648,7 @@ main .recent-activities a{
 .query h3{
     margin-bottom: 0.5rem;
 }
+
 .blog-list table{
     background: var(--color-font);
     width: 100%;
@@ -656,28 +657,27 @@ main .recent-activities a{
     text-align: center;
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
-    border-spacing: 50px 0;
+    table-layout: fixed;
+ 
 }
+
 .blog-list table:hover{
     box-shadow:none;
 }
-.blog-list table tbody td{
+
+
+.blog-list table tbody tr{
     height: 2.8rem;
     border-bottom: 1px solid var(--color-dark-font);
     color: var(--color-secondary);
-    align-items:center;
-    padding: 0 50px;
-    
-
-
+        
 }
+
 
 .blog-list table tbody tr:last-child td{
     border: none;;
 }
-.data{
-    margin-right: 100px;
-}
+
 
 .delete-btn:hover{
    background: var(--color-error);

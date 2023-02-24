@@ -50,8 +50,9 @@ async function logUser(e){
      
     const logUser = await res.json();
     const token = logUser.token;
+    localStorage.setItem('bearer-token', JSON.stringify(token));
     decodedToken = JSON.parse(atob(token.split(".")[1]));
-    console.log(decodedToken)
+    
     if(decodedToken._id !== '63ef7ecb81ce07bf6698c2de'){
         
         window.location.href='../blog.html'
