@@ -128,7 +128,7 @@ function singleBlogPost(containerDiv, e) {
         e.preventDefault();
         const blogId = e.target.dataset.blogid;
         let getData = JSON.parse(localStorage.getItem('blogFormData'));
-        const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
+        //const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
         
         if(!token){
             window.location.href ="login/login.html"
