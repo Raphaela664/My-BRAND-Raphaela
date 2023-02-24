@@ -43,10 +43,10 @@ async function blogSubmit(e){
 }
 
 
-const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
+
 async function blogComment(e){
     event.preventDefault();
-    
+    const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
     let username;
     let getCommentData = JSON.parse(localStorage.getItem('getCommentData')) 
     const date = new Date();
@@ -81,29 +81,27 @@ async function blogComment(e){
             blog_id:blogId
         })
     })
+    let div = document.createElement('div');
+    div.classList.add('comments');
+    let containerDiv = document.querySelector('#comments-post');
+    containerDiv.appendChild(div);
+    let showComment = JSON.parse(localStorage.getItem('getCommentData'))
+    let html =`<p><b>${decodedToken._id} </b><p>
+                <p>${showComment.comment}</P> <br>
+               <span>${comments.date}</span>`;
+
+    div.insertAdjacentHTML("beforeend", html);
+    localStorage.setItem('getCommentData', JSON.stringify(comments));
     
     }
 
     
 }
 
-function postComment(){
 
-    let div = document.createElement('div');
-    div.classList.add('comments');
-    let containerDiv = document.querySelector('#comments-post');
-    containerDiv.appendChild(div);
-    let showComment = JSON.parse(localStorage.getItem('getCommentData'))
-    
-    let html =`<p><b>${decodedToken._id} </b><p>
-                <p>${comments.comment}</P> <br>
-               <span>${comments.date}</span>`;
-
-    div.insertAdjacentHTML("beforeend", html);
-    localStorage.setItem('getCommentData', JSON.stringify(comments));
-}
 
 function retrieveData(){
+    const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
     fetch(baseUrl + 'blogs/viewblog/' + blogId, {
                 method: "GET",
                 headers: {
@@ -122,17 +120,6 @@ function retrieveData(){
     
     
                 })
-    for(let i =0 ; i<showComment.length; i++){
-        let div = document.createElement('div');
-        div.classList.add('comments');
-        let containerDiv = document.querySelector('#comments-post');
-        containerDiv.appendChild(div);
-        let html = `<p><b>${showComment[i].user_id}</b></p><br>
-                    <p>${showComment[i].comment}<p> <br>
-                    <span>${showComment[i].date}</span>`;
-        div.insertAdjacentHTML('afterbegin',html);
-
-        
-    }
+    
 }
 

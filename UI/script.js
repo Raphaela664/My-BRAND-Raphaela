@@ -80,8 +80,13 @@ function PostCreatedBlog() {
         return res.json();
     })
     .then(data =>{
+        
         let containerDiv = document.querySelector('#blog');
         for(let i=0; i<data.length; i++){
+            
+            let countLikes=data[i].blog_likes.length;
+
+            console.log(`These are like `);
             let Pardiv = document.createElement('div');
             Pardiv.classList.add('blog-row');
             
@@ -100,8 +105,8 @@ function PostCreatedBlog() {
                        <p><b>Author: </b>Raphaela MAHORO</p>
                        <a href="" class="go-to-blog" data-blogid="${data[i]._id}">Read More...</a>
                        <div class="reaction">
-                       <i class="fa fa-thumbs-up"></i><p>8</p>
-                       <i class="fa fa-comment"></i><p>0</p>
+                       <i class="fa fa-thumbs-up"></i><p>${data[i].blog_likes.length}</p>
+                       <i class="fa fa-comment"></i><p>${data[i].blog_likes.length}</p>
                        </div>`
 
 
@@ -167,11 +172,36 @@ function BlogPost(){
     myImage.src = data.image;
     let blogContent = document.getElementById("blogContent");
     blogContent.textContent = data.blogContent;
+   
+    let blog_comments =data.blog_comments;
+    let blog_likes = data.blog_likes;
+    let blog_LikesCount = blog_likes.length;
+    let blog_commentsCount = blog_comments.length
+    console.log(blog_LikesCount);
+    
+    const likesCount = document.querySelector('.count');
+    likesCount.textContent=blog_likes.length
+    const commentsCount = document.querySelector('.commentsCount')
+    commentsCount.textContent = blog_comments.length
+    console.log(blog_comments)
+    for(let i =0 ; i<blog_comments.length; i++){
+        let div = document.createElement('div');
+        div.classList.add('comments');
+        let containerDiv = document.querySelector('#comments-post');
+        containerDiv.appendChild(div);
+        let html = `
+                    <p>${blog_comments[i]}<p>`;
+        div.insertAdjacentHTML('afterbegin',html);
+
+        
+    }
 
 }
+/*let html = `<p><b>${blog_comments[i].user_id}</b></p><br>
+                    <p>${blog_comments[i].comment}<p> <br>
+                    <span>${showComment[i].date}</span>`;
 
-
-
+*/
 
 
 let popup = document.getElementById('popup')
