@@ -31,10 +31,11 @@ for(var i=0; i<btns.length; i++){
 
 const queryBtn = document.getElementById('sendQueryBtn');
 queryBtn.addEventListener("click", sendQuery);
-const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
+
 
 
 async function sendQuery(e){
+    const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
     e.preventDefault();
     
     const res = await fetch(baseUrl+"queries/SendQuery",{
@@ -66,9 +67,9 @@ async function sendQuery(e){
 }
 
 function PostCreatedBlog() {
-   
+    const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
     let getData = JSON.parse(localStorage.getItem('blogFormData'));
-    //const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
+   
     const adminToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2VmN2VjYjgxY2UwN2JmNjY5OGMyZGUiLCJpYXQiOjE2NzY4Njg1ODh9.VoXkQ7F9XhXOgKq54y5fUqyQ14N8W3mvdEVA8jL1X4k"
     fetch (baseUrl+'blogs/All',{
         headers:{
@@ -124,11 +125,12 @@ function PostCreatedBlog() {
 
 
 function singleBlogPost(containerDiv, e) {
+    const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
     if (e.target.classList.contains('go-to-blog')) {
         e.preventDefault();
         const blogId = e.target.dataset.blogid;
         let getData = JSON.parse(localStorage.getItem('blogFormData'));
-        //const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
+        
         
         if(!token){
             window.location.href ="login/login.html"
@@ -144,10 +146,10 @@ function singleBlogPost(containerDiv, e) {
                 })
                 .then(data => {
                     console.log(data)
-                    const url = "blog.html"
+                    
                     localStorage.setItem('blogData', JSON.stringify(data));
                     // Redirect to the other page
-                    window.location.href = url;
+                    window.location.href = "blog.html";
     
     
                 })
