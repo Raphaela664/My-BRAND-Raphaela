@@ -44,8 +44,8 @@ async function blogSubmit(e){
 
 
 
-async function blogComment(e){
-    event.preventDefault();
+async function blogComment(){
+    
     const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
     let username;
     let getCommentData = JSON.parse(localStorage.getItem('getCommentData')) 
@@ -81,6 +81,9 @@ async function blogComment(e){
             blog_id:blogId
         })
     })
+    
+
+    /*
     let div = document.createElement('div');
     div.classList.add('comments');
     let containerDiv = document.querySelector('#comments-post');
@@ -92,12 +95,30 @@ async function blogComment(e){
 
     div.insertAdjacentHTML("beforeend", html);
     localStorage.setItem('getCommentData', JSON.stringify(comments));
-    
+    */
     }
 
     
 }
 
+
+
+/*async function bloglike(){
+    const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
+    await fetch(baseUrl+'blogs/comments/create/'+blogId,{
+        method: "POST",
+        headers:{
+            'bearer-token':token,
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            user_id: decodedToken._id,
+            comment: document.getElementById('message').value,
+            blog_id:blogId
+        })
+    })
+// }*/
 
 
 function retrieveData(){

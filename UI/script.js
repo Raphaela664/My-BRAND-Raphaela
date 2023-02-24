@@ -67,6 +67,7 @@ async function sendQuery(e){
 }
 
 function PostCreatedBlog() {
+   
     const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
     let getData = JSON.parse(localStorage.getItem('blogFormData'));
    
@@ -100,13 +101,14 @@ function PostCreatedBlog() {
             childDiv1.appendChild(img);
             Pardiv.appendChild(childDiv1);
             Pardiv.appendChild(childDiv2);
+
             let html =`<h3>${data[i].title}</h3><br>
                        <p>${data[i].blogContent}</p>
                        <p><b>Author: </b>Raphaela MAHORO</p>
                        <a href="" class="go-to-blog" data-blogid="${data[i]._id}">Read More...</a>
                        <div class="reaction">
                        <i class="fa fa-thumbs-up"></i><p>${data[i].blog_likes.length}</p>
-                       <i class="fa fa-comment"></i><p>${data[i].blog_likes.length}</p>
+                       <i class="fa fa-comment"></i><p>${data[i].blog_comments.length}</p>
                        </div>`
 
 
@@ -164,7 +166,8 @@ function singleBlogPost(containerDiv, e) {
     }
 }
 
-function BlogPost(){
+
+ function BlogPost(){
     const data= JSON.parse(localStorage.getItem('blogData'));
     const title = document.getElementById("title");
     title.textContent = data.title;
@@ -197,6 +200,7 @@ function BlogPost(){
     }
 
 }
+
 /*let html = `<p><b>${blog_comments[i].user_id}</b></p><br>
                     <p>${blog_comments[i].comment}<p> <br>
                     <span>${showComment[i].date}</span>`;
