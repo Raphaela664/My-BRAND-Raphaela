@@ -1,3 +1,14 @@
+const token = JSON.parse(localStorage.getItem('bearer-token'))
+
+if(!token){
+    const checklogin = document.getElementById('loginOrOut')
+    checklogin.textContent = 'Login'
+}
+else{
+    const checklogin = document.getElementById('loginOrOut')
+    checklogin.textContent = 'Logout'
+}
+
 var navLinks = document.getElementById("navLinks");
 function showMenu(){
     navLinks.style.right = "0";
@@ -53,8 +64,9 @@ async function sendQuery(e){
     
 
 }
+
 function PostCreatedBlog() {
-    
+   
     let getData = JSON.parse(localStorage.getItem('blogFormData'));
     const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
     const adminToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2VmN2VjYjgxY2UwN2JmNjY5OGMyZGUiLCJpYXQiOjE2NzY4Njg1ODh9.VoXkQ7F9XhXOgKq54y5fUqyQ14N8W3mvdEVA8jL1X4k"
@@ -67,10 +79,11 @@ function PostCreatedBlog() {
         return res.json();
     })
     .then(data =>{
+        let containerDiv = document.querySelector('#blog');
         for(let i=0; i<data.length; i++){
             let Pardiv = document.createElement('div');
             Pardiv.classList.add('blog-row');
-            let containerDiv = document.querySelector('#blog');
+            
             containerDiv.appendChild(Pardiv);
             let childDiv1 = document.createElement('div');
             childDiv1.classList.add('blog-col');
@@ -84,22 +97,80 @@ function PostCreatedBlog() {
             let html =`<h3>${data[i].title}</h3><br>
                        <p>${data[i].blogContent}</p>
                        <p><b>Author: </b>Raphaela MAHORO</p>
-                       <a href="./blog.html">Read More...</a>
+                       <a href="" class="go-to-blog" data-blogid="${data[i]._id}">Read More...</a>
                        <div class="reaction">
                        <i class="fa fa-thumbs-up"></i><p>8</p>
                        <i class="fa fa-comment"></i><p>0</p>
-                       </div>
-    
-            `
+                       </div>`
+
+
+            
             childDiv2.insertAdjacentHTML('afterbegin',html);
     
         
         
     
-    }
-    })
-    
+        }
+        containerDiv.addEventListener('click', (e)=>singleBlogPost(containerDiv,e))
+           
+            
+                
+            
+        
+        })
 }
+
+
+
+
+function singleBlogPost(containerDiv, e) {
+    if (e.target.classList.contains('go-to-blog')) {
+        e.preventDefault();
+        const blogId = e.target.dataset.blogid;
+        let getData = JSON.parse(localStorage.getItem('blogFormData'));
+        const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
+        
+        if(!token){
+            window.location.href ="login/login.html"
+        }else{
+            fetch(baseUrl + 'blogs/viewblog/' + blogId, {
+                method: "GET",
+                headers: {
+                    'bearer-token': token
+                }
+            })
+                .then(res => {
+                    return res.json();
+                })
+                .then(data => {
+                    console.log(data)
+                    const url = "blog.html"
+                    localStorage.setItem('blogData', JSON.stringify(data));
+                    // Redirect to the other page
+                    window.location.href = url;
+    
+    
+                })
+        }
+        
+
+    }
+}
+
+function BlogPost(){
+    const data= JSON.parse(localStorage.getItem('blogData'));
+    const title = document.getElementById("title");
+    title.textContent = data.title;
+    let myImage = document.getElementById("newImage");
+    myImage.src = data.image;
+    let blogContent = document.getElementById("blogContent");
+    blogContent.textContent = data.blogContent;
+
+}
+
+
+
+
 
 let popup = document.getElementById('popup')
 function openPopup(){

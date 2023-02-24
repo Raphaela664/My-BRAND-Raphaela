@@ -12,7 +12,7 @@
     <script src="blog.js"></script>
     <title>Blog</title>
 </head>
-<body onload="BlogPost()">
+<body onload="retrieveData()">
     <div class="body-container">
         <nav>
             <h2 class="nav-logo">RM.</h2>
@@ -25,35 +25,24 @@
                     <li><a href="#portfolio">PROJECTS</a></li>
                     <li><a href="#blog">BLOG</a></li>
                     <li><a href="#cta">CONTACT</a></li>
-                    <li><button class="hero-btn" id="loginOrOut" onclick="window.location.href='./Login/login.html';">Logout</button></li>
+                    <li><button class="hero-btn" onclick="window.location.href='./Login/login.html';">Logout</button></li>
                 </ul>
                 
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
         <section class="blogPage">
-            <h1 id="title">How to Unlock The Power of Design Systems</h1>
+            
             <div class="blogcontent">
                 
                 <div class="blogImage">
-                    <img src="./images/blog2.png" id="newImage">
+                    
                 </div>
                 <div class="blogPara">
-                    <p id="blogContent">
-                        Good design systems can help you create digital
-                        products with efficiency and consistency. 
-                        But great design systems will support and strengthen 
-                        your team’s creativity at the same
-                        being a relatively new concept,
-                        there’s no one true way to implement design systems yet, 
-                        but several major companies have started creating systems for 
-                        their teams and are already reaping the benefits.
-                        Learn everything you need to get up and running with design systems in our free course!</p>
+                    
                 </div>
                 
-                
-                
-                <p><span>Author:</span> MAHORO Raphaela</p>
+                <p><span>Author:</span> Mahoro Raphaela</p>
                 <div class="showLove">
                 <i class="fa fa-thumbs-o-up" id="like"></i> <p class="count">10</p>
                 <i class="fa fa-comment"></i> <p>2</p>
@@ -68,17 +57,8 @@
             <div class="comment-section" name="comments-area">
                 <div id="comments-post">
                     <div class="comments">
-    
-                        <p>It is a long established fact that a reader will be distracted by the readable
-                            content of a page when looking at its layout. The point of using Lorem Ipsum
-                            is that it has a more-or-less normal distribution of letters, as opposed to using
-                            'Content here, content here', making it look like readable English. Many desktop 
-                            publishing packages and web page editors now use Lorem Ipsum as their 
-                            default model text, and a search for 'lorem ipsum' will uncover many web sites 
-                            still in their infancy.
-                        </p>
-                        <p><span>15/02/2022</span> </p>
                     </div>
+                    
                 </div>
                 
 

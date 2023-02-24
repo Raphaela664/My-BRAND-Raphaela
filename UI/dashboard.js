@@ -2,6 +2,7 @@ const sideMenu = document.querySelector("aside");
 const menuBtn = document.querySelector("#menu-btn");
 const closeBtn= document.querySelector("#close-btn");
 const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
+token = JSON.parse(localStorage.getItem('bearer-token'));
 menuBtn.addEventListener('click', () =>{
     sideMenu.style.display='block';
 })
@@ -24,7 +25,7 @@ for(var i=0; i<btns.length; i++){
 function UserRegistration(){
     fetch (baseUrl+'user/login/admin/listOfUsers',{
         headers:{
-            'bearer-token':adminToken
+            'bearer-token':token
         }
     })
     .then(res=>{
@@ -52,7 +53,7 @@ async function retrieveQueries(){
     
     fetch (baseUrl+'queries/queriesList',{
         headers:{
-            'bearer-token':adminToken
+            'bearer-token':token
         }
     })
     .then(res=>{
@@ -81,7 +82,7 @@ function retrieveBlogs(){
 
     fetch (baseUrl+'blogs/All',{
         headers:{
-            'bearer-token':adminToken
+            'bearer-token':token
         }
     })
     .then(res=>{
@@ -90,16 +91,13 @@ function retrieveBlogs(){
     .then(data =>{
         console.log(data);
         for(let i =0; i<data.length; i++){
-            let div = document.createElement('div');
-            div.classList.add('query');
             let containerDiv = document.querySelector('.tableData');
-            containerDiv.appendChild(div);
             let html = `<tr>
-                        <td class="data">${data[i].title}</td>
-                        <td class="data">${data[i].createdAt}</td>
+                        <td>${data[i].title}</td>
+                        <td>${data[i].createdAt}</td>
                         <td><button class="hero-btn delete-btn data">Delete</button></td>
                         </tr>`;
-            div.insertAdjacentHTML('afterbegin',html);
+            containerDiv.insertAdjacentHTML('afterbegin',html);
            
     
             

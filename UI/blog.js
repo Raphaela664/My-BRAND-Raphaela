@@ -43,44 +43,85 @@ async function blogSubmit(e){
 }
 
 
-function blogComment(e){
+const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
+async function blogComment(e){
     event.preventDefault();
-    let getCommentData = JSON.parse(localStorage.getItem('getCommentData')) ||[];
+    
+    let username;
+    let getCommentData = JSON.parse(localStorage.getItem('getCommentData')) 
     const date = new Date();
-
+    if(!token){
+        window.location.href = "login/login.html"
+    }else{
+    decodedToken = JSON.parse(atob(token.split(".")[1]));
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
     let currentDate = `${day}/${month}/${year}`;
-    let getLoginInfo = JSON.parse(localStorage.getItem('LoginFormData'));
-    let lastItem = getLoginInfo.length-1;
-    console.log(getLoginInfo);
-    console.log(lastItem);
     var comments = {
-        comment:document.getElementById('message').value,
-        date : currentDate,
-        user_id: getLoginInfo[lastItem].user_id
+        comment:document.getElementById('message').value
+        //date : currentDate,
+        //user_id: getLoginInfo[lastItem].user_id
     } 
-    console.log(comments);
-    getCommentData.push(comments);
-    localStorage.setItem('getCommentData',JSON.stringify(getCommentData));
+    
+    localStorage.setItem('getCommentData',JSON.stringify(comments));
+    const blogdata= JSON.parse(localStorage.getItem('blogData'));
+    const blogId = blogdata._id
+    console.log(blogId);
+    await fetch(baseUrl+'blogs/comments/create/'+blogId,{
+        method: "POST",
+        headers:{
+            'bearer-token':token,
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            user_id: decodedToken._id,
+            comment: document.getElementById('message').value,
+            blog_id:blogId
+        })
+    })
+    
+    }
+
+    
+}
+
+function postComment(){
+
     let div = document.createElement('div');
     div.classList.add('comments');
     let containerDiv = document.querySelector('#comments-post');
     containerDiv.appendChild(div);
     let showComment = JSON.parse(localStorage.getItem('getCommentData'))
     
-    let html =`<p><b>${comments.user_id} </b><p>
+    let html =`<p><b>${decodedToken._id} </b><p>
                 <p>${comments.comment}</P> <br>
                <span>${comments.date}</span>`;
 
     div.insertAdjacentHTML("beforeend", html);
-    getCommentData.push(comments);
-    localStorage.setItem('getCommentData', JSON.stringify(getCommentData));
+    localStorage.setItem('getCommentData', JSON.stringify(comments));
 }
 
 function retrieveData(){
-    let showComment = JSON.parse(localStorage.getItem('getCommentData'))
+    fetch(baseUrl + 'blogs/viewblog/' + blogId, {
+                method: "GET",
+                headers: {
+                    'bearer-token': token
+                }
+            })
+                .then(res => {
+                    return res.json();
+                })
+                .then(data => {
+                    console.log(data)
+                    const url = "blog.html"
+                    localStorage.setItem('blogData', JSON.stringify(data));
+                    // Redirect to the other page
+                    window.location.href = url;
+    
+    
+                })
     for(let i =0 ; i<showComment.length; i++){
         let div = document.createElement('div');
         div.classList.add('comments');
@@ -94,6 +135,4 @@ function retrieveData(){
         
     }
 }
-
-
 
