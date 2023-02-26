@@ -86,8 +86,6 @@ function PostCreatedBlog() {
         for(let i=0; i<data.length; i++){
             
             let countLikes=data[i].blog_likes.length;
-
-            console.log(`These are like `);
             let Pardiv = document.createElement('div');
             Pardiv.classList.add('blog-row');
             
@@ -180,8 +178,6 @@ function singleBlogPost(containerDiv, e) {
     let blog_likes = data.blog_likes;
     let blog_LikesCount = blog_likes.length;
     let blog_commentsCount = blog_comments.length
-    console.log(blog_LikesCount);
-    
     const likesCount = document.querySelector('.count');
     likesCount.textContent=blog_likes.length
     const commentsCount = document.querySelector('.commentsCount')
@@ -192,8 +188,9 @@ function singleBlogPost(containerDiv, e) {
         div.classList.add('comments');
         let containerDiv = document.querySelector('#comments-post');
         containerDiv.appendChild(div);
-        let html = `
-                    <p>${blog_comments[i]}<p>`;
+        let html = `<p><b>${blog_comments[i].user_id}</b></p><br>
+        <p>${blog_comments[i].comment}<p> <br>
+        <span>${blog_comments[i].date}</span>`;
         div.insertAdjacentHTML('afterbegin',html);
 
         
@@ -201,11 +198,9 @@ function singleBlogPost(containerDiv, e) {
 
 }
 
-/*let html = `<p><b>${blog_comments[i].user_id}</b></p><br>
-                    <p>${blog_comments[i].comment}<p> <br>
-                    <span>${showComment[i].date}</span>`;
 
-*/
+
+
 
 
 let popup = document.getElementById('popup')

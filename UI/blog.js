@@ -45,80 +45,67 @@ async function blogSubmit(e){
 
 
 async function blogComment(){
-    
+    event.preventDefault()
+    const token = JSON.parse(localStorage.getItem('bearer-token'))
     const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
-    let username;
-    let getCommentData = JSON.parse(localStorage.getItem('getCommentData')) 
+  
+    //let getCommentData = JSON.parse(localStorage.getItem('getCommentData')) 
     const date = new Date();
     if(!token){
         window.location.href = "login/login.html"
     }else{
-    decodedToken = JSON.parse(atob(token.split(".")[1]));
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-    let currentDate = `${day}/${month}/${year}`;
-    var comments = {
-        comment:document.getElementById('message').value
-        //date : currentDate,
-        //user_id: getLoginInfo[lastItem].user_id
-    } 
-    
-    localStorage.setItem('getCommentData',JSON.stringify(comments));
-    const blogdata= JSON.parse(localStorage.getItem('blogData'));
-    const blogId = blogdata._id
-    console.log(blogId);
-    await fetch(baseUrl+'blogs/comments/create/'+blogId,{
-        method: "POST",
-        headers:{
-            'bearer-token':token,
-            Accept: "application/json",
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            user_id: decodedToken._id,
-            comment: document.getElementById('message').value,
-            blog_id:blogId
+        let decodedToken = JSON.parse(atob(token.split(".")[1]));
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        let currentDate = `${day}/${month}/${year}`;
+        var comments = {
+            comment:document.getElementById('message').value
+            //date : currentDate,
+            //user_id: getLoginInfo[lastItem].user_id
+        } 
+        
+        localStorage.setItem('getCommentData',JSON.stringify(comments));
+        const blogdata= JSON.parse(localStorage.getItem('blogData'));
+        const blogId = blogdata._id
+        console.log(blogId,decodedToken);
+        await fetch(baseUrl+'blogs/comments/create/'+blogId,{
+            method: "POST",
+            headers:{
+                'bearer-token':token,
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                user_id: decodedToken._id,
+                comment: document.getElementById('message').value,
+                blog_id:blogId
+            })
         })
-    })
+   }
+
     
-
-    /*
-    let div = document.createElement('div');
-    div.classList.add('comments');
-    let containerDiv = document.querySelector('#comments-post');
-    containerDiv.appendChild(div);
-    let showComment = JSON.parse(localStorage.getItem('getCommentData'))
-    let html =`<p><b>${decodedToken._id} </b><p>
-                <p>${showComment.comment}</P> <br>
-               <span>${comments.date}</span>`;
-
-    div.insertAdjacentHTML("beforeend", html);
-    localStorage.setItem('getCommentData', JSON.stringify(comments));
-    */
-    }
-
     
 }
 
 
 
-/*async function bloglike(){
+async function bloglike(){
+    event.preventDefault();
+    const token = JSON.parse(localStorage.getItem('bearer-token'));
     const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
-    await fetch(baseUrl+'blogs/comments/create/'+blogId,{
+    const blogdata= JSON.parse(localStorage.getItem('blogData'));
+    const blogId = blogdata._id
+    await fetch(baseUrl+'blogs/viewblog/like/'+blogId,{
         method: "POST",
         headers:{
             'bearer-token':token,
             Accept: "application/json",
             "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            user_id: decodedToken._id,
-            comment: document.getElementById('message').value,
-            blog_id:blogId
-        })
+        }
+       
     })
-// }*/
+}
 
 
 function retrieveData(){

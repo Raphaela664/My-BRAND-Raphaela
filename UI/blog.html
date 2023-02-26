@@ -55,7 +55,7 @@
                 
                 <p><span>Author:</span> MAHORO Raphaela</p>
                 <div class="showLove">
-                <i class="fa fa-thumbs-o-up" id="like"></i> <p class="count">10</p>
+                <i class="fa fa-thumbs-o-up" id="like" onclick="bloglike()"></i> <p class="count">10</p>
                 <i class="fa fa-comment"></i> <p class="commentsCount">2</p>
                 </div>
             </div>
@@ -82,12 +82,12 @@
                 </div>
                 
 
-                <form class="comments" onsubmit="blogComment()">
+                <form class="comments" onsubmit="blogComment()" >
                     <div class="input-group">
                         <textarea id="message" rows="5"></textarea>
                         <label for="message"><i class="fa fa-comment"></i>  Leave a comment...</label>
                     </div>
-                    <button type="submit" id="submit">POST</button> 
+                    <button type="submit" id="submit" >POST</button> 
                 </form>
                 
 
