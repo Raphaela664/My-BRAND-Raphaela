@@ -28,7 +28,7 @@ async function blogSubmit(e){
     await fetch(baseUrl+'blogs/newblog',{
         method: "POST",
         headers:{
-            'bearer-token':adminToken,
+            'bearer-token':token,
             Accept: "application/json",
             "Content-Type": "application/json"
         },
