@@ -682,3 +682,13 @@ main .recent-activities a{
 .delete-btn:hover{
    background: var(--color-error);
 }
+.update-btn:hover{
+    background:var(--color-success);
+}
+.cell-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+  .cell {
+    margin-right: 10px;
+  }

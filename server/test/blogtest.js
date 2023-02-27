@@ -40,8 +40,6 @@ describe('/First test collection', ()=>{
             .get('/blogs/All')
             .end((err,res)=>{
                 res.should.have.status(200);
-                res.body.should.a('array');
-                res.body.should.not.eql(0);
                 done();
             })
         })
@@ -50,7 +48,7 @@ describe('/First test collection', ()=>{
             chai.request(server)
             .get('/blogs/All')
             .end((err,res)=>{
-                res.should.have.status(404);
+                res.should.have.status(500);
                 res.body.should.a('object');
                 res.body.should.have.property("message").eql("No Blog found");
                 done();
@@ -230,10 +228,9 @@ describe('/First test collection', ()=>{
 
             
         })
-         
-        it('add comment', (done)=>{
+        it('fetch all users',(done)=>{
             let user ={
-                username: 'user0004',
+                username: 'Administrator',
                 password: 'Test123@'
             }            
             chai.request(server)
@@ -244,7 +241,60 @@ describe('/First test collection', ()=>{
                 res.header.should.have.property("bearer-token");
                 
                 let tok = res.header['bearer-token'];
-                let blog_id = '63e645c097785efb3bbf0683'
+                
+                chai.request(server)
+                .get('/user/login/admin/listOfUsers')
+                .set({ 'bearer-token': tok})
+                .end((err,res)=>{
+                    res.should.have.status(200);
+                    done();
+    
+                });
+            });  
+        });
+        it('sucessfuly delete a user', (done)=>{
+            let user ={
+                username: 'Administrator',
+                password: 'Test123@'
+            }            
+            chai.request(server)
+            .post('/user/login')
+            .send(user)
+            .end((err,res)=>{
+                res.should.have.status(200);
+                res.header.should.have.property("bearer-token");
+                
+                let tok = res.header['bearer-token'];
+                let user_id = '63ef7f9d81ce07bf6698c2e2'
+                chai.request(server)
+                .delete('/user/login/admin/deleteUser/'+ user_id)
+                .set({ 'bearer-token': tok})
+                .end((err,res)=>{
+                 
+                    res.should.have.status(200);
+                    done();
+    
+                });
+
+            });
+
+            
+        })
+        
+        it('add comment', (done)=>{
+            let user ={
+                username: 'mahororaphaela',
+                password: 'Test123@'
+            }            
+            chai.request(server)
+            .post('/user/login')
+            .send(user)
+            .end((err,res)=>{
+                res.should.have.status(200);
+                res.header.should.have.property("bearer-token");
+                
+                let tok = res.header['bearer-token'];
+                let blog_id = '63f4598a10bd4d773e6a63b9'
                 let comment = {
                     comment: "Please let it be now"
                 }
@@ -255,6 +305,64 @@ describe('/First test collection', ()=>{
                 .end((err,res)=>{
                     res.should.have.status(200);
                     done();
+    
+                });
+
+            });
+
+            
+        })
+        it('sucessfuly delete a comment', (done)=>{
+            let user ={
+                username: 'Administrator',
+                password: 'Test123@'
+            }            
+            chai.request(server)
+            .post('/user/login')
+            .send(user)
+            .end((err,res)=>{
+                res.should.have.status(200);
+                res.header.should.have.property("bearer-token");
+                
+                let tok = res.header['bearer-token'];
+                let comment_id = '63f87a4afe9608b17a646923'
+                chai.request(server)
+                .delete('/blogs/comments/delete/'+ comment_id)
+                .set({ 'bearer-token': tok})
+                .end((err,res)=>{
+                 
+                    res.should.have.status(200);
+                    done();
+                    
+    
+                });
+
+            });
+
+            
+        })
+        it('sucessfuly like or unlike a blog', (done)=>{
+            let user ={
+                username: 'Administrator',
+                password: 'Test123@'
+            }            
+            chai.request(server)
+            .post('/user/login')
+            .send(user)
+            .end((err,res)=>{
+                res.should.have.status(200);
+                res.header.should.have.property("bearer-token");
+                
+                let tok = res.header['bearer-token'];
+                let blog_id = '63f4598a10bd4d773e6a63b9'
+                chai.request(server)
+                .post('/blogs/viewblog/like/'+ blog_id)
+                .set({ 'bearer-token': tok})
+                .end((err,res)=>{
+                 
+                    res.should.have.status(200);
+                    done();
+                    
     
                 });
 

@@ -1,5 +1,10 @@
-const token = JSON.parse(localStorage.getItem('bearer-token'))
+//const token = JSON.parse(localStorage.getItem('bearer-token'))
 
+
+function logoutFunc(){
+  localStorage.setItem('bearer-token',null)
+  token=null;
+}
 if(!token){
     const checklogin = document.getElementById('loginOrOut')
     checklogin.textContent = 'Login'
@@ -7,6 +12,8 @@ if(!token){
 else{
     const checklogin = document.getElementById('loginOrOut')
     checklogin.textContent = 'Logout'
+    const logout = document.querySelector('#loginOrOut')
+    logout.addEventListener('click',logoutFunc);
 }
 
 var navLinks = document.getElementById("navLinks");
