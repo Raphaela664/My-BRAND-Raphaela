@@ -2,7 +2,7 @@ const sideMenu = document.querySelector("aside");
 const menuBtn = document.querySelector("#menu-btn");
 const closeBtn= document.querySelector("#close-btn");
 const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
-token = JSON.parse(localStorage.getItem('bearer-token'));
+let token = JSON.parse(localStorage.getItem('bearer-token'));
 menuBtn.addEventListener('click', () =>{
     sideMenu.style.display='block';
 })
@@ -10,7 +10,7 @@ menuBtn.addEventListener('click', () =>{
 closeBtn.addEventListener('click', ()=>{
     sideMenu.style.display='none';
 })
-const adminToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjM2QxNjQyMDQ2ZDZiOWZhNTIxMmEiLCJpYXQiOjE2Nzc0NzUxMzN9.TNCJYFHQT_V6qCjM8IPakgRQlH44J4DchtQVMvCJG1k"
+//const adminToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjM2QxNjQyMDQ2ZDZiOWZhNTIxMmEiLCJpYXQiOjE2Nzc0NzUxMzN9.TNCJYFHQT_V6qCjM8IPakgRQlH44J4DchtQVMvCJG1k"
 var btnContainer = document.getElementById("sidebar");
 var btns = btnContainer.getElementsByClassName("link");
 
@@ -21,6 +21,22 @@ for(var i=0; i<btns.length; i++){
         this.className += " active";
 
     })
+}
+
+function logout(){
+    localStorage.setItem('bearer-token',null);
+    token=null;
+}
+
+if(!token){
+    const checklogin = document.getElementById('loginOrOut');
+    checklogin.textContent = 'Login';
+}
+else{
+    const checklogin = document.getElementById('loginOrOut');
+    checklogin.textContent = 'Logout';
+    const logoutBtn = document.querySelector('#logout');
+    logoutBtn.addEventListener('click', logout);
 }
 function UserRegistration(){
     fetch (baseUrl+'user/login/admin/listOfUsers',{
@@ -165,7 +181,10 @@ function retrieveBlogs(){
             let html = `<tr data-blogid="${data[i]._id}">
                         <td>${data[i].title}</td>
                         <td>${data[i].createdAt}</td>
-                        <td><button class="hero-btn delete-btn data">Delete</button></td>
+                        <td colspan="2" class="cell-wrapper">
+                        <div ><button class="hero-btn delete-btn data" class="cell">Delete</button></div>
+                        <div><button class="hero-btn update-btn data" class="cell">Update</button></div>
+                        </td>
                         </tr>`;
             containerDiv.insertAdjacentHTML('afterbegin',html);
            
@@ -173,6 +192,8 @@ function retrieveBlogs(){
         }
         const tableEl = document.querySelector('.tableEl');
         tableEl.addEventListener('click',deleteBlog);
+        const updateEl = document.querySelector('.tableEl')
+        updateEl.addEventListener('click',UpdateBlog);
     })
 
     let showData = JSON.parse(localStorage.getItem('blogFormData'));
@@ -181,15 +202,73 @@ function retrieveBlogs(){
    
 }
 
+   
 
 
 
+function UpdateBlog(e) {
+   
+    if (e.target.classList.contains('update-btn')) {
+      const rowElement = e.target.parentNode.parentNode.parentNode;
+      window.location.href = "./addblog.html"
+      const blogId = rowElement.getAttribute('data-blogid'); // get the blog id from the row element
+      console.log(blogId)
+      
+      
+      fetch(baseUrl + `blogs/viewblog/${blogId}`, {
+        headers: {
+          'bearer-token': token
+        },
+        method: 'GET'
+      })
+      .then(res => res.json())
+      .then(data => {
+        
+        document.getElementById('title').value = data.title;
+        document.getElementById('message').value = data.blogContent;
+        document.getElementById('imageF').value = data.image
+  
+        // Handle the update when the user submits the form
+        const formEl = document.querySelector('form');
+        formEl.addEventListener('submit', event => {
+          event.preventDefault();
+          // Perform the update
+          fetch(baseUrl + `blogs/updateBlog/${blogId}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              'bearer-token': token
+            },
+            body: JSON.stringify({
+              title: document.getElementById('title').value,
+              blogContent: document.getElementById('message').value,
+              // ... include other input values as necessary
+            })
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            console.log('Blog updated successfully');
+            // Reload the page to see the updated data
+            location.reload();
+          })
+          .catch(error => {
+            console.error('There was an error updating the blog:', error);
+          });
+        });
+      })
+      .catch(error => {
+        console.error('There was an error fetching the blog data:', error);
+      });
+    }
+  }
 
 
 function deleteBlog(e) {
     if (e.target.classList.contains('delete-btn')) {
       console.log(e.target.parentNode.parentNode); // log the row element
-      const rowElement = e.target.parentNode.parentNode;
+      const rowElement = e.target.parentNode.parentNode.parentNode;
       const blogId = rowElement.getAttribute('data-blogid'); // get the blog id from the row element
       console.log(blogId)
       rowElement.remove(); // remove the row element from the DOM
@@ -214,3 +293,4 @@ function deleteBlog(e) {
     }
   }
   
+

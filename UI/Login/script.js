@@ -53,7 +53,7 @@ async function logUser(e){
     localStorage.setItem('bearer-token', JSON.stringify(token));
     decodedToken = JSON.parse(atob(token.split(".")[1]));
     
-    if(decodedToken._id !== '63ef7ecb81ce07bf6698c2de'){
+    if(decodedToken._id !== '63fc3d1642046d6b9fa5212a'){
         
         window.location.href='../blog.html'
     }
