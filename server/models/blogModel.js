@@ -18,7 +18,7 @@ const blogSchema = mongoose.Schema(
             required:[true,"Add some Blog Content"]
         },
         blog_likes:[{type:mongoose.Schema.Types.ObjectId, ref: BlogLike}],
-        blog_comments:[{type:mongoose.Schema.Types.Mixed }]
+        blog_comments:[]
         
 
     },

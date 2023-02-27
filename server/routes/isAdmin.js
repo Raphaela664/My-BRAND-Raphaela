@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = (req,res,next)=>{
-    if(req.user._id !== '63ef7ecb81ce07bf6698c2de'){
+    if(req.user._id !== '63fc3d1642046d6b9fa5212a'){
         return res.status(401).send('Access belongs to Admin')
     }
     next();

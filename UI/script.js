@@ -67,6 +67,7 @@ async function sendQuery(e){
 }
 
 function PostCreatedBlog() {
+   
     const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
     let getData = JSON.parse(localStorage.getItem('blogFormData'));
    
@@ -80,8 +81,11 @@ function PostCreatedBlog() {
         return res.json();
     })
     .then(data =>{
+        
         let containerDiv = document.querySelector('#blog');
         for(let i=0; i<data.length; i++){
+            
+            let countLikes=data[i].blog_likes.length;
             let Pardiv = document.createElement('div');
             Pardiv.classList.add('blog-row');
             
@@ -95,13 +99,14 @@ function PostCreatedBlog() {
             childDiv1.appendChild(img);
             Pardiv.appendChild(childDiv1);
             Pardiv.appendChild(childDiv2);
+
             let html =`<h3>${data[i].title}</h3><br>
                        <p>${data[i].blogContent}</p>
                        <p><b>Author: </b>Raphaela MAHORO</p>
                        <a href="" class="go-to-blog" data-blogid="${data[i]._id}">Read More...</a>
                        <div class="reaction">
-                       <i class="fa fa-thumbs-up"></i><p>8</p>
-                       <i class="fa fa-comment"></i><p>0</p>
+                       <i class="fa fa-thumbs-up"></i><p>${data[i].blog_likes.length}</p>
+                       <i class="fa fa-comment"></i><p>${data[i].blog_comments.length}</p>
                        </div>`
 
 
@@ -159,7 +164,8 @@ function singleBlogPost(containerDiv, e) {
     }
 }
 
-function BlogPost(){
+
+ function BlogPost(){
     const data= JSON.parse(localStorage.getItem('blogData'));
     const title = document.getElementById("title");
     title.textContent = data.title;
@@ -167,8 +173,31 @@ function BlogPost(){
     myImage.src = data.image;
     let blogContent = document.getElementById("blogContent");
     blogContent.textContent = data.blogContent;
+   
+    let blog_comments =data.blog_comments;
+    let blog_likes = data.blog_likes;
+    let blog_LikesCount = blog_likes.length;
+    let blog_commentsCount = blog_comments.length
+    const likesCount = document.querySelector('.count');
+    likesCount.textContent=blog_likes.length
+    const commentsCount = document.querySelector('.commentsCount')
+    commentsCount.textContent = blog_comments.length
+    console.log(blog_comments)
+    for(let i =0 ; i<blog_comments.length; i++){
+        let div = document.createElement('div');
+        div.classList.add('comments');
+        let containerDiv = document.querySelector('#comments-post');
+        containerDiv.appendChild(div);
+        let html = `<p><b>${blog_comments[i].user_id}</b></p><br>
+        <p>${blog_comments[i].comment}<p> <br>
+        <span>${blog_comments[i].date}</span>`;
+        div.insertAdjacentHTML('afterbegin',html);
+
+        
+    }
 
 }
+
 
 
 

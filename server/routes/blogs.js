@@ -135,7 +135,7 @@ app.post('/comments/create/:id',verify,(req,res)=>{
                 let commentData= await newCommentDoc.save();
                 await Blog.updateOne(
                     {_id:blog._id},
-                    {$push:{ blog_comments:commentData.comment}}
+                    {$push:{ blog_comments:commentData}}
     
                 )
                 return res.status(200).json(commentData);
