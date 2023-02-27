@@ -1,4 +1,4 @@
-//const token = JSON.parse(localStorage.getItem('bearer-token'))
+const token = JSON.parse(localStorage.getItem('bearer-token'))
 
 
 function logoutFunc(){
