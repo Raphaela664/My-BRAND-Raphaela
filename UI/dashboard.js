@@ -10,7 +10,7 @@ menuBtn.addEventListener('click', () =>{
 closeBtn.addEventListener('click', ()=>{
     sideMenu.style.display='none';
 })
-const adminToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2VmN2VjYjgxY2UwN2JmNjY5OGMyZGUiLCJpYXQiOjE2NzY4Njg1ODh9.VoXkQ7F9XhXOgKq54y5fUqyQ14N8W3mvdEVA8jL1X4k"
+const adminToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjM2QxNjQyMDQ2ZDZiOWZhNTIxMmEiLCJpYXQiOjE2Nzc0NzUxMzN9.TNCJYFHQT_V6qCjM8IPakgRQlH44J4DchtQVMvCJG1k"
 var btnContainer = document.getElementById("sidebar");
 var btns = btnContainer.getElementsByClassName("link");
 
