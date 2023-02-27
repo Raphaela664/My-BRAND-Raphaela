@@ -427,7 +427,7 @@ describe('/First test collection', ()=>{
             
         })
         
-         it('delete a query', (done)=>{
+        it('delete a query', (done)=>{
             let user ={
                 username: 'Administrator',
                 password: 'Test123@'
