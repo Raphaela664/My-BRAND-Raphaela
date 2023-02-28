@@ -22,7 +22,7 @@
                 <i class="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
                     <li class="links"><a href="./index.html">Home</a></li>
-                    <li class="links"><a href="./dashboard.html">Dashboard</a></li>
+                    <li class="links"><a href="./dashboard.html" class="hide" id="hideDash">Dashboard</a></li>
                     <li class="links"><button class="hero-btn" onclick="window.location.href='./index.html';">Logout</button></li>
                 </ul>
                 
@@ -30,7 +30,7 @@
             <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
         <div class="cta-form blogform">
-            <form onsubmit="blogSubmit();" id="addblogForm">
+            <form onsubmit="blogSubmit();" id="addblog">
                 <div class="input-row">
                     <div class="input-group">
                         <input type="text" name="FullName"  id="title" required>
