@@ -114,8 +114,8 @@ async function blogSubmit(e){
         });
 
     }
-    const form = document.getElementById("addblogForm");
-    clearFormInputs("addblogForm");
+    //const form = document.getElementById("addblogForm");
+    //clearFormInputs("addblogForm");
 
 }
 
@@ -207,7 +207,7 @@ function retrieveData(){
     
 }
 
-function clearFormInputs(formId) {
+/*function clearFormInputs(formId) {
     const form = document.getElementById(formId);
     const inputs = form.querySelectorAll("input, textarea");
     inputs.forEach(input => {
@@ -217,4 +217,4 @@ function clearFormInputs(formId) {
         input.value = "";
       }
     });
-  }
+  }*/
