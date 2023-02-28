@@ -205,7 +205,7 @@ function UpdateBlog(e) {
       const rowElement = e.target.parentNode.parentNode.parentNode;
       const blogId = rowElement.getAttribute('data-blogid');
       localStorage.setItem('blogid',blogId)
-      window.location.href = "./addblog.html"
+      window.location.href = "addBlog.html"
       
     } 
   }
