@@ -1,4 +1,4 @@
-
+const blogId = localStorage.getItem('blogid')
 let image;
 document.querySelector('#imageF').addEventListener('change', function(){
     const reader = new FileReader();
@@ -8,7 +8,7 @@ document.querySelector('#imageF').addEventListener('change', function(){
     })
 
 })
-async function blogSubmit(e){
+/*async function blogSubmit(e){
     event.preventDefault();
     //console.log('working')
     const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
@@ -41,7 +41,83 @@ async function blogSubmit(e){
     })
 
 }
+*/
+window.addEventListener('load', updateblogContent);
+async function updateblogContent(){
+    if(blogId){
+        await fetch(baseUrl+`blogs/viewblog/${blogId}`,{
+            method: 'GET',
+            headers: {
+                'bearer-token': token
+            },
+            
+        })
+        .then(res=>{
+            return res.json();
+        })
+        .then(data =>{
+            console.log(data);
+            console.log(data.title);
+            document.getElementById('title').value= data.title;
+            document.getElementById('imageF').src = data.image
+            console.log(data.image);
+            
+            document.getElementById('message').textContent= data.blogContent;
+        })
+        .catch(error => console.log(error));
+    }
+}
+async function blogSubmit(e){
+    event.preventDefault();
+    const baseUrl = "https://my-brand-raphaela-production.up.railway.app/";
+    const token = JSON.parse(localStorage.getItem('bearer-token'))
 
+    let blogFormData = JSON.parse(localStorage.getItem('blogFormData')) || [];
+    let blogData = {
+        title : document.getElementById('title').value,
+        image: image,
+        messageContent: document.getElementById('message').value
+    }
+    blogFormData.push(blogData);
+    localStorage.setItem('blogFormData', JSON.stringify(blogFormData));
+    
+    const formData = {
+        title: document.getElementById('title').value,
+        image: image,
+        blogContent: document.getElementById('message').value
+    }
+
+  // get the blog id from the row element
+    if (blogId) {
+        // Update existing blog
+        
+        await fetch(baseUrl + `blogs/updateBlog/${blogId}`, {
+            method: 'PUT',
+            headers: {
+                'bearer-token': token,
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        });
+        localStorage.removeItem("blogid");
+    } else {
+        // Create new blog
+        await fetch(baseUrl+'blogs/newblog',{
+            method: "POST",
+            headers:{
+                'bearer-token':token,
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        });
+
+    }
+    const form = document.getElementById("addblogForm");
+    clearFormInputs("addblogForm");
+
+}
 
 
 async function blogComment(){
@@ -131,3 +207,14 @@ function retrieveData(){
     
 }
 
+function clearFormInputs(formId) {
+    const form = document.getElementById(formId);
+    const inputs = form.querySelectorAll("input, textarea");
+    inputs.forEach(input => {
+      if (input.type === "checkbox" || input.type === "radio") {
+        input.checked = false;
+      } else {
+        input.value = "";
+      }
+    });
+  }

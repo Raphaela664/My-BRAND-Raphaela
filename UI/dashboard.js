@@ -24,8 +24,7 @@ for(var i=0; i<btns.length; i++){
 }
 
 function logout(){
-    localStorage.setItem('bearer-token',null);
-    token=null;
+    localStorage.removeItem('bearer-token');
 }
 
 if(!token){
@@ -156,13 +155,7 @@ function deleteQuery(e){
         
     }  
 }
-/*function deleteQuery(e){
-    if(e.target.classList.contains('delete-btn')){
-        const btn = e.target;
-        btn.parentNode.parentNode.remove();
-        
-    }  
-}*/
+
 
 function retrieveBlogs(){
 
@@ -210,58 +203,11 @@ function UpdateBlog(e) {
    
     if (e.target.classList.contains('update-btn')) {
       const rowElement = e.target.parentNode.parentNode.parentNode;
+      const blogId = rowElement.getAttribute('data-blogid');
+      localStorage.setItem('blogid',blogId)
       window.location.href = "./addblog.html"
-      const blogId = rowElement.getAttribute('data-blogid'); // get the blog id from the row element
-      console.log(blogId)
       
-      
-      fetch(baseUrl + `blogs/viewblog/${blogId}`, {
-        headers: {
-          'bearer-token': token
-        },
-        method: 'GET'
-      })
-      .then(res => res.json())
-      .then(data => {
-        
-        document.getElementById('title').value = data.title;
-        document.getElementById('message').value = data.blogContent;
-        document.getElementById('imageF').value = data.image
-  
-        // Handle the update when the user submits the form
-        const formEl = document.querySelector('form');
-        formEl.addEventListener('submit', event => {
-          event.preventDefault();
-          // Perform the update
-          fetch(baseUrl + `blogs/updateBlog/${blogId}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-              'bearer-token': token
-            },
-            body: JSON.stringify({
-              title: document.getElementById('title').value,
-              blogContent: document.getElementById('message').value,
-              // ... include other input values as necessary
-            })
-          })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            console.log('Blog updated successfully');
-            // Reload the page to see the updated data
-            location.reload();
-          })
-          .catch(error => {
-            console.error('There was an error updating the blog:', error);
-          });
-        });
-      })
-      .catch(error => {
-        console.error('There was an error fetching the blog data:', error);
-      });
-    }
+    } 
   }
 
 
