@@ -114,6 +114,9 @@ async function blogSubmit(e){
         });
 
     }
+    const form = document.getElementById("addblogForm");
+    clearFormInputs("addblogForm");
+
 }
 
 
@@ -204,3 +207,14 @@ function retrieveData(){
     
 }
 
+function clearFormInputs(formId) {
+    const form = document.getElementById(formId);
+    const inputs = form.querySelectorAll("input, textarea");
+    inputs.forEach(input => {
+      if (input.type === "checkbox" || input.type === "radio") {
+        input.checked = false;
+      } else {
+        input.value = "";
+      }
+    });
+  }
