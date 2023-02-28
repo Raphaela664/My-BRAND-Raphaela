@@ -24,8 +24,7 @@ for(var i=0; i<btns.length; i++){
 }
 
 function logout(){
-    localStorage.setItem('bearer-token',null);
-    token=null;
+    localStorage.removeItem('bearer-token');
 }
 
 if(!token){

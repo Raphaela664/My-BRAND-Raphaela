@@ -100,6 +100,7 @@ async function blogSubmit(e){
             },
             body: JSON.stringify(formData)
         });
+        localStorage.removeItem("blogid");
     } else {
         // Create new blog
         await fetch(baseUrl+'blogs/newblog',{
@@ -111,6 +112,7 @@ async function blogSubmit(e){
             },
             body: JSON.stringify(formData)
         });
+
     }
 }
 
