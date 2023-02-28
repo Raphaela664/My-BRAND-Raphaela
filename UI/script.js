@@ -217,3 +217,17 @@ function openPopup(){
 function closePopup(){
     popup.classList.remove('open-popup')
 }
+
+
+window.addEventListener('load', showDashboard);
+function showDashboard(){
+    let showDash = document.getElementById('hideDash');
+    let decodedToken = JSON.parse(atob(token.split(".")[1]));
+    if(decodedToken._id == '63fc3d1642046d6b9fa5212a'){
+        showDash.classList.remove('hide');
+    }
+    else{
+        showDash.classList.add('hide')
+    }
+    
+}

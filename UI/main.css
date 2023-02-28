@@ -659,7 +659,6 @@ footer {
     
     
 }
-
 .blogPage h2{
     margin-bottom: 0;
 }
@@ -726,3 +725,8 @@ footer {
     font-weight: 500px;
     margin: 30px 0 10px;
 }
+
+.hide{
+    display: none;
+}
+
